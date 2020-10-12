@@ -1,0 +1,400 @@
+.checkout-product{
+    .href{
+        background: #fafafa;
+        height: 100px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        a{  
+            margin-top: 40px;
+            color: #222222;
+            font-weight: 600;
+            font-size: 14px;
+        }   
+    }
+    .customer{
+        background: #fafafa;
+        height: 70px;
+        margin-bottom: 20px;
+        border-top: 4px solid #1e85be;
+        i{
+            color: #1e85be;
+            padding: 0px 20px;
+        }
+        p{
+            color: #333333;
+            font-size: 15px;
+        }
+        span{
+            color: #00a4fc;
+            cursor: pointer;
+            font-size: 15px;
+            margin-left: 10px;
+            position: relative;
+        }
+    }
+    .login{
+        border: 1px  solid #cacadd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        padding: 20px;
+        display: none;
+        p{
+            color: #222222;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+        form{
+            width: 100%;          
+            .name{
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                label{
+                    color: #222222;
+                    font-size: 15px;
+                    i{
+                        color: red;
+                        font-weight: 800;
+                    }
+                }
+                input.first{
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                    border: 1px solid #cacadd;
+                    padding: 15px;
+                    width: 95%;
+                }
+            }
+            .checkbox{
+                label{
+                    margin-left: 15px;
+                    color: #222222;
+                    font-size: 15px;
+                }
+            }
+           
+        }
+        button{
+            background: #007bff;
+            color: white;
+            width: 98%;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 15px;
+            text-align: center;
+            transition: all  0.3s;
+            cursor: pointer;
+            &:hover{
+                background: #5cc93b;
+            }
+        }
+        a{
+            color: #007bff;
+            margin-top: 25px;
+            font-size: 15px;
+        }
+    }   
+    .coupon{
+        display: none;
+        border: 1px  solid #cacadd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        padding: 20px;
+        p{
+            color: #222222;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+        form{
+            input{
+                //margin-top: 15px;
+                margin-bottom: 15px;
+                border: 1px solid #cacadd;
+                padding: 15px;
+                width: 45%;
+            }
+            button{
+                margin-left: 50px;
+                background: #007bff;
+                padding: 15px 40px;
+                color: white;
+                font-weight: 800;
+                border-radius: 5px;
+                transition: all 0.3s;
+                cursor: pointer;
+                &:hover{
+                    background: #5cc93b;
+                }
+            }
+        }
+    }
+    .order{
+        width: 100%;
+        .billing{
+            width: 50%;
+            h3{
+                color: #222222;
+                font-size: 30px;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+            form{
+                width: 100%;
+               label{
+                   color: #333333;
+                   font-size: 14px;
+                   font-weight: 600;
+                   i{
+                       color: red;
+                       font-weight: 800;
+                   }
+               }
+                input{
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    width: 95%;
+                    border: 1px  solid #cacadd;
+                    padding: 15px;
+                }
+                .name{
+                    width: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    input.first{
+                        width: 90%;
+                    }
+                }
+                .checkbox{
+                    input{
+                        width: 5%;
+                        margin-left: -10px;
+                    }
+                    .box{
+                        margin-top: 30px;
+                        label.ship{
+                            font-size: 30px;
+                            color: #333333;
+                            font-weight: 700;
+                        }
+                      
+                    }
+                    p{
+                        color: #333333;
+                        font-size: 15px;
+                        margin-top: 15px;
+                        margin-bottom: 10px;
+                    }
+                    textarea{
+                        width: 95%;
+                        border: 1px solid #dfdcde;
+                        padding: 15px;
+                    }
+                    
+                }
+                
+            }
+            .country{
+                .select-3{
+                    width: 95%;
+                    position: relative;
+                    .select-style-2{
+                        border: 1px solid #dfdcde;
+                        padding: 15px;
+                        span{
+                            color: #666666;
+                            font-size: 14px;
+                            font-weight: 700;
+                        }
+                        
+                    }
+                    ul.select-options-2{
+                       display: none;
+                       position: absolute;
+                       width: 100%;
+                       top: 100%;
+                       left: 0;
+                       border: 1px solid #dfdcde;
+                       background: white;
+                       padding: 15px;
+                       height: 250px;
+                       overflow-y: auto;
+                       li{
+
+                           padding: 5px  0;
+                           color: black;
+                           &.selected{
+                               background: #dfdcde;
+                           }
+                           &:hover{
+                               color: white;
+                               background: #007bff;
+                           }
+                       }
+    
+                    }
+                }
+            }
+        }
+        .your-order{
+            width: 50%;
+            h3{
+                color: #222222;
+                font-size: 30px;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+            .content{
+                border: 1px solid #cacadd;
+                border-radius: 5px;
+                .sub{
+                    padding: 25px;
+                    border-bottom: 1px solid #cacadd;
+                    p{
+                        font-size: 15px;
+                        color: #222222;
+                        font-weight: 700;
+                        width: 60%;
+                    }
+                    span.total{
+                        font-size: 15px;
+                        width: 40%;
+                        font-weight: 700;
+                        color: #5cc93b;
+                    }
+                    span.namesub{
+                        font-size: 15px;
+                        width: 40%;
+                        color: #222222;
+                        font-weight: 700;
+                    }
+                }
+                .product-out{
+                   
+                    .product{
+                        padding: 25px;
+                        border-bottom: 1px solid #cacadd;
+                    p{
+                        font-size: 15px;
+                        width: 60%;
+                    }
+                    span{
+                        font-weight: 700;
+                    }
+                    span.total-product{
+                        font-size: 15px;
+                        width: 40%;
+                        font-weight: 600;
+                        color: #5cc93b;
+                    }
+                    }
+                }
+                .shipping{
+                    padding: 25px;
+                    border-bottom: 1px solid #cacadd;
+                    p{
+                        font-size: 15px;
+                        color: #222222;
+                        font-weight: 700;
+                        width: 60%;
+                    }
+                    form{
+                        display: flex;
+                        flex-direction: column;
+                        width: 40%;
+                        label{
+                            input{
+                                margin-right: 10px;
+                            }
+                            color: #222222;
+                            font-size: 14px;
+                            margin-bottom: 10px;
+                            span{
+                                font-size: 15px;
+                                color: black;
+                                font-weight: 700;
+                            }
+                        }
+                      
+                    }
+                }
+                .total-cart{
+                    padding: 25px;
+                    p{
+                        font-size: 15px;
+                        color: #222222;
+                        font-weight: 700;
+                        width: 60%;
+                    }
+                    span.total{
+                        font-size: 15px;
+                        width: 40%;
+                        color: #5cc93b;
+                        font-weight: 800;
+                    }
+                }
+            }
+            .cash{
+                margin-top: 25px;
+                background: #ebe9eb;
+                border-radius: 5px;
+                padding: 20px;
+                width: 100%;
+                position: relative;
+                .border{
+                    position: absolute;
+                    width: 100%;
+                    left: 0;
+                    bottom: 40%;
+                    border: 1px solid #dfdcde;
+                    height: 1px;
+                }
+                p{
+                    color: #333333;
+                    font-size: 15px;
+                    margin-bottom: 25px;
+                }
+                .paywith{
+                    width: 100%;
+                    background: #dfdcde;
+                    padding: 10px; 
+                    border-radius: 5px;
+                    position: relative;
+                    &::before{
+                        position: absolute;
+                        content: "";
+                        top: -25%;
+                        left: 7%;
+                        width: 0;
+                        height: 0;
+                        border-left: 10px solid transparent;
+                        border-right: 10px solid transparent;                       
+                        border-bottom: 10px solid #dfdcde;
+                        
+                    }
+                    span{
+                        color: #444444;
+                        font-size: 14px;                                       
+                    }
+                }
+                button{
+                    background: #007bff;
+                    padding: 15px 30px  ;
+                    color: white;
+                    font-weight: 800;
+                    border-radius: 5px;
+                    margin-top: 40px;
+                    transition: all 0.3s;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: #5cc93b;
+                    }
+                }
+            }
+        }
+       
+    }
+}
