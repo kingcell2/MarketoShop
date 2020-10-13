@@ -3,7 +3,7 @@ $(function () {
 
     cart.map(val => {
         $(` <div class="href">
-                <a href="http://localhost:3000/home.html">Home ></a>
+                <a href="/home.html">Home ></a>
                 <a href="">${val.categories}</a>  
             </div>
             <div class="col">

@@ -1,5 +1,6 @@
 $(function () {
     let cart = [];
+    let wishlist = [];
     const products = [
         {
             id: 1,
@@ -130,7 +131,7 @@ $(function () {
             ],
             quick_filter: ["Featured Product", "New Arrivals", "Today Gadgets", "Best Deal", "Recently Added"],
             collections: ["F-Hot Sell", "N-On Sell", "N-Hot Sell", "T-On Sell", "T-Best", "R-On Sell", "F-1"],
-            quantity: 50,
+            quantity: 36,
         },
         {
             id: 8,
@@ -148,7 +149,7 @@ $(function () {
             ],
             quick_filter: ["Featured Product", "New Arrivals", "Today Gadgets", "Recently Added"],
             collections: ["F-Hot Sell", "N-On Sell", "N-Hot Sell", "T-On Sell", "T-Best", "R-On Sell"],
-            quantity: 50,
+            quantity: 47,
         },
         {
             id: 9,
@@ -166,7 +167,7 @@ $(function () {
             ],
             quick_filter: ["Featured Product", "New Arrivals", "Today Gadgets", "Best Deal", "Recently Added"],
             collections: ["F-Hot Sell", "N-On Sell", "N-Hot Sell", "T-On Sell", "T-Best", "B-On Sell", "R-On Sell", "F-1"],
-            quantity: 50,
+            quantity: 16,
         },
         {
             id: 10,
@@ -238,7 +239,7 @@ $(function () {
             ],
             quick_filter: ["Featured Product", , "New Arrivals", "Today Gadgets", "Recently Added"],
             collections: ["F-Trend", "F-Best Sell", "N-Best Sell", "T-Hot Sell", "T-Trend", "R-Hot Sell", "F-2"],
-            quantity: 50,
+            quantity: 11,
         },
         {
             id: 14,
@@ -255,7 +256,7 @@ $(function () {
                 "https://demo.xpeedstudio.com/marketo/home2/wp-content/uploads/sites/2/2013/06/16G-RAM-1TB-SSD-VOYO-15-6-2G-Dedicated-Card-Laptop-i7-6500U-with-Backlit-keyboard-1-100x100.jpg",],
             quick_filter: ["Featured Product", "Best Deal", "Recently Added"],
             collections: ["F-Trend", "R-Trend"],
-            quantity: 50,
+            quantity: 25,
         },
         {
             id: 15,
@@ -303,7 +304,7 @@ $(function () {
             ],
             quick_filter: ["Featured Product", "Recently Added", "Trending Products"],
             collections: ["F-Trend", "R-Trend", "T-3"],
-            quantity: 50,
+            quantity: 40,
         },
         {
             id: 18,
@@ -317,7 +318,7 @@ $(function () {
             ],
             quick_filter: ["Featured Product", "Trending Products"],
             collections: ["F-Trend", "T-3"],
-            quantity: 50,
+            quantity: 32,
         },
         {
             id: 19,
@@ -331,7 +332,7 @@ $(function () {
             ],
             quick_filter: ["Featured Product", "New Arrivals", "Today Gadgets", "Best Deal", "Trending Products"],
             collections: ["F-Best Sell", "N-Best Sell", "T-Hot Sell", "T-Trend", "B-Trend", "T-3"],
-            quantity: 50,
+            quantity: 11,
         },
         {
             id: 20,
@@ -359,7 +360,7 @@ $(function () {
             ],
             quick_filter: ["Featured Product", "New Arrivals", "Today Gadgets", "Best Deal", "Trending Products"],
             collections: ["F-Best Sell", "N-Best Sell", "T-Hot Sell", "T-Trend", "B-Trend", "T-1"],
-            quantity: 50,
+            quantity: 30,
         },
         {
             id: 22,
@@ -373,7 +374,7 @@ $(function () {
             ],
             quick_filter: ["New Arrivals", "Best Deal", "Trending Products"],
             collections: ["N-Trend", "B-Trend", "T-1"],
-            quantity: 50,
+            quantity: 15,
         },
         {
             id: 23,
@@ -387,7 +388,7 @@ $(function () {
             ],
             quick_filter: ["New Arrivals", "Best Deal", "Trending Products"],
             collections: ["N-Trend", "B-Hot Sell", "T-2"],
-            quantity: 50,
+            quantity: 36,
         },
         {
             id: 24,
@@ -474,6 +475,7 @@ $(function () {
             quantity: 50,
         },
     ];
+
     $('.sell a').click(function (e) {
         e.preventDefault();
         $(this).parent().find('a.active').removeClass('active');
@@ -524,7 +526,7 @@ $(function () {
                     <img src=${val.img}
                         alt="item image">
                         <br>
-                    <a id="view-item" class="product-name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                    <a id="view-item" class="product-name" href="/viewproduct.html"> ${val.name}</a>
                     <br>
                     <div class="price">
                         <span class="price-default">$${val.price}.00</span>
@@ -548,7 +550,7 @@ $(function () {
                     <img src=${val.img}
                         alt="item image">
                         <br>
-                        <a id="view-item" class="product-name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                        <a id="view-item" class="product-name" href="/viewproduct.html"> ${val.name}</a>
                         <br>
                     <div class="price">
                         <span class="price-discount">$${val.price}.00</span>
@@ -576,7 +578,7 @@ $(function () {
                     <img src=${val.img}
                         alt="item image">
                         <br>
-                        <a id="view-item" class="product-name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                        <a id="view-item" class="product-name" href="/viewproduct.html"> ${val.name}</a>
                         <br>
                     <div class="price">
                         <span class="price-default">$${val.price}.00</span>
@@ -600,7 +602,7 @@ $(function () {
                     <img src=${val.img}
                         alt="item image">
                         <br>
-                        <a id="view-item" class="product-name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                        <a id="view-item" class="product-name" href="/viewproduct.html"> ${val.name}</a>
                         <br>
                     <div class="price">
                         <span class="price-discount">$${val.price}.00</span>
@@ -627,7 +629,7 @@ $(function () {
                     <img src=${val.img}
                         alt="item image">
                         <br>
-                        <a id="view-item" class="product-name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                        <a id="view-item" class="product-name" href="/viewproduct.html"> ${val.name}</a>
                         <br>
                     <div class="price">
                         <span class="price-default">$${val.price}.00</span>
@@ -651,7 +653,7 @@ $(function () {
                     <img src=${val.img}
                         alt="item image">
                         <br>
-                        <a id="view-item" class="product-name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                        <a id="view-item" class="product-name" href="/viewproduct.html"> ${val.name}</a>
                         <br>
                     <div class="price">
                         <span class="price-discount">$${val.price}.00</span>
@@ -678,7 +680,7 @@ $(function () {
                     <img src=${val.img}
                         alt="item image">
                         <br>
-                        <a id="view-item" class="product-name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                        <a id="view-item" class="product-name" href="/viewproduct.html"> ${val.name}</a>
                         <br>
                     <div class="price">
                         <span class="price-default">$${val.price}.00</span>
@@ -702,7 +704,7 @@ $(function () {
                     <img src=${val.img}
                         alt="item image">
                         <br>
-                        <a id="view-item" class="product-name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                        <a id="view-item" class="product-name" href="/viewproduct.html"> ${val.name}</a>
                         <br>
                     <div class="price">
                         <span class="price-discount">$${val.price}.00</span>
@@ -757,7 +759,7 @@ $(function () {
                             alt="">
                         <a class="categories" href="">${val.categories}</a>
                         <br>
-                        <a id="view-item" class="name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                        <a id="view-item" class="name" href="/viewproduct.html"> ${val.name}</a>
                         <div class="price">
                         <span class="price-default">$${val.price}.00</span>
                         <span class="price-discount">$${Math.floor(val.price - (val.price * val.discount) / 100)}.00</span>
@@ -789,7 +791,7 @@ $(function () {
                             alt="">
                         <a class="categories" href="">${val.categories}</a>
                         <br>
-                        <a id="view-item" class="name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                        <a id="view-item" class="name" href="/viewproduct.html"> ${val.name}</a>
                         <div class="price">
                         
                         <span class="price-discount">$${val.price}.00</span>
@@ -826,7 +828,7 @@ $(function () {
                             alt="">
                         <a class="categories" href="">${val.categories}</a>
                         <br>
-                        <a id="view-item" class="name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                        <a id="view-item" class="name" href="/viewproduct.html"> ${val.name}</a>
                         <div class="price">
                         <span class="price-default">$${val.price}.00</span>
                         <span class="price-discount">$${Math.floor(val.price - (val.price * val.discount) / 100)}.00</span>
@@ -857,7 +859,7 @@ $(function () {
                             alt="">
                         <a class="categories" href="">${val.categories}</a>
                         <br>
-                        <a id="view-item" class="name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                        <a id="view-item" class="name" href="/viewproduct.html"> ${val.name}</a>
                         <div class="price">
                         
                         <span class="price-discount">$${val.price}.00</span>
@@ -892,7 +894,7 @@ $(function () {
                             alt="">
                         <a class="categories" href="">${val.categories}</a>
                         <br>
-                        <a id="view-item" class="name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                        <a id="view-item" class="name" href="/viewproduct.html"> ${val.name}</a>
                         <div class="price">
                         <span class="price-default">$${val.price}.00</span>
                         <span class="price-discount">$${Math.floor(val.price - (val.price * val.discount) / 100)}.00</span>
@@ -924,7 +926,7 @@ $(function () {
                             alt="">
                         <a class="categories" href="">${val.categories}</a>
                         <br>
-                        <a id="view-item" class="name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                        <a id="view-item" class="name" href="/viewproduct.html"> ${val.name}</a>
                         <div class="price">
                         
                         <span class="price-discount">$${val.price}.00</span>
@@ -960,7 +962,7 @@ $(function () {
                             alt="">
                         <a class="categories" href="">${val.categories}</a>
                         <br>
-                        <a id="view-item" class="name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                        <a id="view-item" class="name" href="/viewproduct.html"> ${val.name}</a>
                         <div class="price">
                         <span class="price-default">$${val.price}.00</span>
                         <span class="price-discount">$${Math.floor(val.price - (val.price * val.discount) / 100)}.00</span>
@@ -991,7 +993,7 @@ $(function () {
                             alt="">
                         <a class="categories" href="">${val.categories}</a>
                         <br>
-                        <a id="view-item" class="name" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                        <a id="view-item" class="name" href="/viewproduct.html"> ${val.name}</a>
                         <div class="price">
                         
                         <span class="price-discount">$${val.price}.00</span>
@@ -1042,7 +1044,7 @@ $(function () {
                                     <br>
                                 <a class="categories" href="">${val.categories}</a>
                                 <br>
-                                <a id="view-item-2" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                                <a id="view-item-2" class="name"  href="/viewproduct.html"> ${val.name}</a>
                                 <div class="price">
                                     
                                     <span class="price-discount">$${val.price}.00</span>
@@ -1050,7 +1052,7 @@ $(function () {
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
                                     <a ><i class="far fa-eye"></i></a>
-                                    <a ><i class="far fa-heart"></i></a>
+                                    <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
                         </div>                    
@@ -1066,14 +1068,14 @@ $(function () {
                                     <br>
                                 <a class="categories" href="">${val.categories}</a>
                                 <br>
-                                <a id="view-item-2" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>                                <div class="price">
+                                <a id="view-item-2" class="name"  href="/viewproduct.html"> ${val.name}</a>                                <div class="price">
                                     <span class="price-default">$${val.price}.00</span>
                                     <span class="price-discount">$${Math.floor(val.price - (val.price * val.discount) / 100)}.00</span>
                                 </div>
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
                                     <a ><i class="far fa-eye"></i></a>
-                                    <a ><i class="far fa-heart"></i></a>
+                                    <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
                         </div>                    
@@ -1090,7 +1092,7 @@ $(function () {
                             </div>
                             <div class="info">
                                 <a class="categories" href="">${val.categories}</a>
-                                <a id="view-item-3" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
+                                <a id="view-item-3" class="name"  href="/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
                                 <img src=${val.img}
                                     alt="">
 
@@ -1118,7 +1120,7 @@ $(function () {
                             <div class="info">
                                 <a class="categories" href="">${val.categories}</a>
                                 <br>
-                                <a id="view-item-3" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
+                                <a id="view-item-3" class="name"  href="/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
                                 <p>Availability: <span>${val.quantity} in stock</span></p>
                                 <img src=${val.img}
                                     alt="">
@@ -1153,7 +1155,7 @@ $(function () {
                                     <br>
                                 <a class="categories" href="">${val.categories}</a>
                                 <br>
-                                <a id="view-item-2" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                                <a id="view-item-2" class="name"  href="/viewproduct.html"> ${val.name}</a>
                                 <div class="price">
                                     
                                     <span class="price-discount">$${val.price}.00</span>
@@ -1161,7 +1163,7 @@ $(function () {
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
                                     <a ><i class="far fa-eye"></i></a>
-                                    <a ><i class="far fa-heart"></i></a>
+                                    <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
                         </div>                    
@@ -1177,14 +1179,14 @@ $(function () {
                                     <br>
                                 <a class="categories" href="">${val.categories}</a>
                                 <br>
-                                <a id="view-item-2" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>                                <div class="price">
+                                <a id="view-item-2" class="name"  href="/viewproduct.html"> ${val.name}</a>                                <div class="price">
                                     <span class="price-default">$${val.price}.00</span>
                                     <span class="price-discount">$${Math.floor(val.price - (val.price * val.discount) / 100)}.00</span>
                                 </div>
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
                                     <a ><i class="far fa-eye"></i></a>
-                                    <a ><i class="far fa-heart"></i></a>
+                                    <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
                         </div>                    
@@ -1202,7 +1204,7 @@ $(function () {
                             <div class="info">
                                 <a class="categories" href="">${val.categories}</a>
                                 <br>
-                                <a id="view-item-3" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
+                                <a id="view-item-3" class="name"  href="/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
                                 <img src=${val.img}
                                     alt="">
 
@@ -1230,7 +1232,7 @@ $(function () {
                             <div class="info">
                                 <a class="categories" href="">${val.categories}</a>
                                 <br>
-                                <a id="view-item-3" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
+                                <a id="view-item-3" class="name"  href="/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
                                 <p>Availability: <span>${val.quantity} in stock</span></p>
                                 <img src=${val.img}
                                     alt="">
@@ -1265,7 +1267,7 @@ $(function () {
                                     <br>
                                 <a class="categories" href="">${val.categories}</a>
                                 <br>
-                                <a id="view-item-2" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                                <a id="view-item-2" class="name"  href="/viewproduct.html"> ${val.name}</a>
                                 <div class="price">
                                     
                                     <span class="price-discount">$${val.price}.00</span>
@@ -1273,7 +1275,7 @@ $(function () {
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
                                     <a ><i class="far fa-eye"></i></a>
-                                    <a ><i class="far fa-heart"></i></a>
+                                    <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
                         </div>                    
@@ -1289,14 +1291,14 @@ $(function () {
                                     <br>
                                 <a class="categories" href="">${val.categories}</a>
                                 <br>
-                                <a id="view-item-2" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>                                <div class="price">
+                                <a id="view-item-2" class="name"  href="/viewproduct.html"> ${val.name}</a>                                <div class="price">
                                     <span class="price-default">$${val.price}.00</span>
                                     <span class="price-discount">$${Math.floor(val.price - (val.price * val.discount) / 100)}.00</span>
                                 </div>
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
                                     <a ><i class="far fa-eye"></i></a>
-                                    <a ><i class="far fa-heart"></i></a>
+                                    <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
                         </div>                    
@@ -1314,7 +1316,7 @@ $(function () {
                             <div class="info">
                                 <a class="categories" href="">${val.categories}</a>
                                 <br>
-                                <a id="view-item-3" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
+                                <a id="view-item-3" class="name"  href="/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
                                 <img src=${val.img}
                                     alt="">
 
@@ -1342,7 +1344,7 @@ $(function () {
                             <div class="info">
                                 <a class="categories" href="">${val.categories}</a>
                                 <br>
-                                <a id="view-item-3" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
+                                <a id="view-item-3" class="name"  href="/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
                                 <p>Availability: <span>${val.quantity} in stock</span></p>
                                 <img src=${val.img}
                                     alt="">
@@ -1377,7 +1379,7 @@ $(function () {
                                     <br>
                                 <a class="categories" href="">${val.categories}</a>
                                 <br>
-                                <a id="view-item-2" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                                <a id="view-item-2" class="name"  href="/viewproduct.html"> ${val.name}</a>
                                 <div class="price">
                                     
                                     <span class="price-discount">$${val.price}.00</span>
@@ -1385,7 +1387,7 @@ $(function () {
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
                                     <a ><i class="far fa-eye"></i></a>
-                                    <a ><i class="far fa-heart"></i></a>
+                                    <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
                         </div>                    
@@ -1401,14 +1403,14 @@ $(function () {
                                     <br>
                                 <a class="categories" href="">${val.categories}</a>
                                 <br>
-                                <a id="view-item-2" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>                                <div class="price">
+                                <a id="view-item-2" class="name"  href="/viewproduct.html"> ${val.name}</a>                                <div class="price">
                                     <span class="price-default">$${val.price}.00</span>
                                     <span class="price-discount">$${Math.floor(val.price - (val.price * val.discount) / 100)}.00</span>
                                 </div>
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
                                     <a ><i class="far fa-eye"></i></a>
-                                    <a ><i class="far fa-heart"></i></a>
+                                    <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
                         </div>                    
@@ -1426,7 +1428,7 @@ $(function () {
                             <div class="info">
                                 <a class="categories" href="">${val.categories}</a>
                                 <br>
-                                <a id="view-item-3" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
+                                <a id="view-item-3" class="name"  href="/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
                                 <img src=${val.img}
                                     alt="">
 
@@ -1454,7 +1456,7 @@ $(function () {
                             <div class="info">
                                 <a class="categories" href="">${val.categories}</a>
                                 <br>
-                                <a id="view-item-3" class="name"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
+                                <a id="view-item-3" class="name"  href="/viewproduct.html"> ${val.name}</a>                                <p>Availability: <span>${val.quantity} in stock</span></p>
                                 <p>Availability: <span>${val.quantity} in stock</span></p>
                                 <img src=${val.img}
                                     alt="">
@@ -1528,7 +1530,7 @@ $(function () {
                            <i class="far fa-heart"></i>
                        </div>
                    </div>
-                   <a id="view-item"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                   <a id="view-item"  href="/viewproduct.html"> ${val.name}</a>
 
                    <div class="price">
                        <span class="price-default">$${val.price}.00</span>
@@ -1554,7 +1556,7 @@ $(function () {
                            <i class="far fa-heart"></i>
                        </div>
                    </div>
-                   <a id="view-item"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                   <a id="view-item"  href="/viewproduct.html"> ${val.name}</a>
                    <div class="price">
                        <span class="price-discount">$${val.price}.00</span>
                    </div>
@@ -1589,7 +1591,7 @@ $(function () {
                            <i class="far fa-heart"></i>
                        </div>
                    </div>
-                   <a id="view-item"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                   <a id="view-item"  href="/viewproduct.html"> ${val.name}</a>
                    <div class="price">
                        <span class="price-default">$${val.price}.00</span>
                        <span class="price-discount">$${Math.floor(val.price - (val.price * val.discount) / 100)}.00</span>
@@ -1614,7 +1616,7 @@ $(function () {
                            <i class="far fa-heart"></i>
                        </div>
                    </div>
-                   <a id="view-item"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                   <a id="view-item"  href="/viewproduct.html"> ${val.name}</a>
                    <div class="price">
                        <span class="price-discount">$${val.price}.00</span>
                    </div>
@@ -1649,7 +1651,7 @@ $(function () {
                            <i class="far fa-heart"></i>
                        </div>
                    </div>
-                   <a id="view-item"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                   <a id="view-item"  href="/viewproduct.html"> ${val.name}</a>
                    <div class="price">
                        <span class="price-default">$${val.price}.00</span>
                        <span class="price-discount">$${Math.floor(val.price - (val.price * val.discount) / 100)}.00</span>
@@ -1674,7 +1676,7 @@ $(function () {
                            <i class="far fa-heart"></i>
                        </div>
                    </div>
-                   <a id="view-item"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                   <a id="view-item"  href="/viewproduct.html"> ${val.name}</a>
                    <div class="price">
                        <span class="price-discount">$${val.price}.00</span>
                    </div>
@@ -1709,7 +1711,7 @@ $(function () {
                            <i class="far fa-heart"></i>
                        </div>
                    </div>
-                   <a id="view-item"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                   <a id="view-item"  href="/viewproduct.html"> ${val.name}</a>
                    <div class="price">
                        <span class="price-default">$${val.price}.00</span>
                        <span class="price-discount">$${Math.floor(val.price - (val.price * val.discount) / 100)}.00</span>
@@ -1734,7 +1736,7 @@ $(function () {
                            <i class="far fa-heart"></i>
                        </div>
                    </div>
-                   <a id="view-item"  href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                   <a id="view-item"  href="/viewproduct.html"> ${val.name}</a>
                    <div class="price">
                        <span class="price-discount">$${val.price}.00</span>
                    </div>
@@ -1831,7 +1833,7 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                    <a id="view-item-4" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                    <a id="view-item-4" href="/viewproduct.html"> ${val.name}</a>
                         <span class="default">$${val.price}.00</span>
                         <span class="discount">$${Math.round(val.price - val.price * val.discount / 100)}.00</span>
                     </div>
@@ -1842,7 +1844,7 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                    <a id="view-item-4" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                    <a id="view-item-4" href="/viewproduct.html"> ${val.name}</a>
                         <span class="discount">$${val.price}.00</span>
                        
                     </div>
@@ -1857,7 +1859,7 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                    <a id="view-item-4" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                    <a id="view-item-4" href="/viewproduct.html"> ${val.name}</a>
                         <span class="default">$${val.price}.00</span>
                         <span class="discount">$${Math.round(val.price - val.price * val.discount / 100)}.00</span>
                     </div>
@@ -1868,7 +1870,7 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                    <a id="view-item-4" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                    <a id="view-item-4" href="/viewproduct.html"> ${val.name}</a>
                         <span class="discount">$${val.price}.00</span>
                         
                     </div>
@@ -1883,7 +1885,7 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                    <a id="view-item-4" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                    <a id="view-item-4" href="/viewproduct.html"> ${val.name}</a>
                         <span class="default">$${val.price}.00</span>
                         <span class="discount">$${Math.round(val.price - val.price * val.discount / 100)}.00</span>
                     </div>
@@ -1894,7 +1896,7 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                    <a id="view-item-4" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                    <a id="view-item-4" href="/viewproduct.html"> ${val.name}</a>
                         <span class="discount">$${val.price}.00</span>
                         
                     </div>
@@ -1920,7 +1922,7 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                    <a id="view-item-4" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                    <a id="view-item-4" href="/viewproduct.html"> ${val.name}</a>
                         <span class="default">$${val.price}.00</span>
                         <span class="discount">$${Math.round(val.price - val.price * val.discount / 100)}.00</span>
                     </div>
@@ -1931,7 +1933,7 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                    <a id="view-item-4" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                    <a id="view-item-4" href="/viewproduct.html"> ${val.name}</a>
                         <span class="discount">$${val.price}.00</span>
                        
                     </div>
@@ -1946,7 +1948,7 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                    <a id="view-item-4" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                    <a id="view-item-4" href="/viewproduct.html"> ${val.name}</a>
                         <span class="default">$${val.price}.00</span>
                         <span class="discount">$${Math.round(val.price - val.price * val.discount / 100)}.00</span>
                     </div>
@@ -1957,7 +1959,7 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                    <a id="view-item-4" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                    <a id="view-item-4" href="/viewproduct.html"> ${val.name}</a>
                         <span class="discount">$${val.price}.00</span>
                        
                     </div>
@@ -1982,7 +1984,7 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                    <a id="view-item-4" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                    <a id="view-item-4" href="/viewproduct.html"> ${val.name}</a>
                         <span class="default">$${val.price}.00</span>
                         <span class="discount">$${Math.round(val.price - val.price * val.discount / 100)}.00</span>
                     </div>
@@ -1993,7 +1995,7 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                    <a id="view-item-4" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                    <a id="view-item-4" href="/viewproduct.html"> ${val.name}</a>
                         <span class="discount">$${val.price}.00</span>
                        
                     </div>
@@ -2008,7 +2010,7 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                    <a id="view-item-4" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                    <a id="view-item-4" href="/viewproduct.html"> ${val.name}</a>
                         <span class="default">$${val.price}.00</span>
                         <span class="discount">$${Math.round(val.price - val.price * val.discount / 100)}.00</span>
                     </div>
@@ -2019,7 +2021,7 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                    <a id="view-item-4" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                    <a id="view-item-4" href="/viewproduct.html"> ${val.name}</a>
                         <span class="discount">$${val.price}.00</span>
                        
                     </div>
@@ -2057,7 +2059,7 @@ $(function () {
                             <br>
                             <a class="categories" href="">${val.categories}</a>
                             <br>
-                            <a id="view-item" class="name" href="http://localhost:3000/viewproduct.html">
+                            <a id="view-item" class="name" href="/viewproduct.html">
                                 ${val.name}</a>
                             <div class="price flex">
                                 <span class="price-default">$${val.price}.00</span>
@@ -2091,7 +2093,7 @@ $(function () {
                             <br>
                             <a class="categories" href="">${val.categories}</a>
                             <br>
-                            <a id="view-item" class="name" href="http://localhost:3000/viewproduct.html">
+                            <a id="view-item" class="name" href="/viewproduct.html">
                                 ${val.name}</a>
                             <div class="price flex">
                                 <span class="price-discount">$${val.price}.00</span>
@@ -2157,7 +2159,7 @@ $(function () {
                     <div data-id=${val.id} class="item flex a-center">
                         <img src=${val.img} alt="">
                             <div class="info">
-                            <a id="view-item" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                            <a id="view-item" href="/viewproduct.html"> ${val.name}</a>
                                 <br>
                                     <div class="price">
                                         <span class="price-default">$${val.price}.00</span>
@@ -2172,7 +2174,7 @@ $(function () {
                     <div data-id=${val.id} class="item flex a-center">
                                     <img src=${val.img} alt="">
                                     <div class="info">
-                                    <a id="view-item" href="http://localhost:3000/viewproduct.html"> ${val.name}</a>
+                                    <a id="view-item" href="/viewproduct.html"> ${val.name}</a>
                                     <br>
                                         <div class="price">
                                             <span class="price-discount">$${val.price}.00</span>
@@ -2326,7 +2328,7 @@ $(function () {
         $(".product-cart").empty();
         cart.map(val => {
             $(`
-            <div class="product flex a-center j-between">
+            <div data-id=${val.id} class="product flex a-center j-between">
             <div class="item-product flex a-center j-between">
                 <img src=${val.img}
                     alt="">
@@ -2394,25 +2396,49 @@ $(function () {
         localStorage.setItem("cart", JSON.stringify(cart))
     })
 
+
+    $("body").on("click", ".wishlist", function () {
+        const currentId = $(this).parents(".item-6").data("id");
+        const currentItem = products.find((val) => val.id === currentId);
+        const idx = wishlist.findIndex(val => val.id === currentId);
+        if (idx === -1) {
+            currentItem.quantity = 1;
+            // currentItem.total = Math.round(currentItem.price - currentItem.price * currentItem.discount / 100) * currentItem.quantity_2;
+            wishlist.push(currentItem)
+        } else {
+            wishlist[idx].quantity = 1;
+            // wishlist[idx].total = (Math.round(wishlist[idx].quantity_2 * (wishlist[idx].price - wishlist[idx].price * wishlist[idx].discount / 100)))
+        }
+        const quantity = wishlist.reduce((acc, val) => {
+            return acc + val.quantity;
+        }, 0);
+        $(".white").text(`${quantity}`);
+        localStorage.setItem("wishlist", JSON.stringify(wishlist))
+
+    })
+
+
     $("body").on("click", ".update", function () {
         const currentId = $(this).parents(".item").data("id");
         const currentItem = products.find((val) => val.id === currentId);
         const idx = cart.findIndex(val => val.id === currentId);
-        console.log(currentItem);
-        console.log(currentId);
-        console.log(idx);
         let quantity_input = $("#quantity").val()
         if (idx === -1) {
             currentItem.quantity = 0;
             currentItem.quantity = parseInt(quantity_input);
             currentItem.total = Math.round((currentItem.price - currentItem.price * currentItem.discount / 100) * currentItem.quantity);
             cart.push(currentItem)
+            //onst subtotal = cart.map(val => Math.round(val.price - val.price * val.discount / 100) * val.quantity)
+
         }
         else {
             cart[idx].quantity = parseInt(quantity_input);
             cart[idx].total = (Math.round(cart[idx].quantity * (cart[idx].price - cart[idx].price * cart[idx].discount / 100)))
             //cart.push(currentItem)
+            //  const subtotal = cart.map(val => Math.round(val.price - val.price * val.discount / 100) * val.quantity)
+            $(".subtotal").text(`$${cart.total}.00`)
         }
+        $(".subtotal").text(`$${currentItem.total}.00`)
 
         const quantity = cart.reduce((acc, val) => {
             return acc + val.quantity;
@@ -2425,36 +2451,33 @@ $(function () {
             $(".no-product").css('display', 'none')
         }
         $(".total").text(`$${total}.00`)
-        const subtotal = cart.map(val => Math.round(val.price - val.price * val.discount / 100) * val.quantity)
-        for (let i in subtotal) {
-            $(".subtotal").text(`$${subtotal[i]}.00`)
-        }
-
         $(".product-cart").empty();
         cart.map(val => {
             $(`
-            <div data-id=${val.id} class="product flex a-center j-between">
-            <div  class="item-product flex a-center j-between">
-                <img src=${val.img}
-                    alt="">
-                <div class="info">
-                    <a class="name" href="">${val.name}</a>
-                    <div class="price flex a-center">
-                        <span class="quantity">${val.quantity}x </span>
-                        <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
+                <div data-id=${val.id} class="product flex a-center j-between" >
+                    <div class="item-product flex a-center j-between">
+                        <img src=${val.img}
+                            alt="">
+                            <div class="info">
+                                <a class="name" href="">${val.name}</a>
+                                <div class="price flex a-center">
+                                    <span class="quantity">${val.quantity}x </span>
+                                    <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
+                                </div>
+                            </div>
+            </div>
+                        <button id="delete">X</button>
                     </div>
-                </div>
-            </div>
-            <button id="delete">X</button>     
-            </div>
         `).appendTo(".product-cart");
         })
         localStorage.setItem("cart", JSON.stringify(cart))
     })
     //delete view cart
     $("body").on("click", "#delete", function () {
-        const cartId = $(this).parents(".item-product").data("id");
+        const cartId = $(this).parents(".product").data("id");
+        //const currentItem = products.find((val) => val.id === cartId);
         const idx = cart.findIndex(val => val.id === cartId);
+        console.log(cartId);
         cart.splice(idx, 1)
         const totalCart = cart.reduce((acc, val) => {
             return acc + Math.floor(val.total);
@@ -2463,28 +2486,28 @@ $(function () {
         const quantity = cart.reduce((acc, val) => {
             return acc + val.quantity;
         }, 0);
-        $(".blue").text(`${quantity}`);
+        $(".blue").text(`${quantity} `);
         $(".product-cart").empty();
         if (cart.length) {
             $(".view-cart").css('opacity', '1')
-            $(".total").text(`$${totalCart}.00`)
+            $(".total").text(`$${totalCart} .00`)
             cart.map(val => {
                 $(`
-                <div  class="product flex a-center j-between">
-                <div data-id=${val.id}  class="item-product flex a-center j-between">
+            <div  data-id=${val.id} class="product flex a-center j-between" >
+                <div class="item-product flex a-center j-between">
                     <img src=${val.img}
                         alt="">
-                    <div class="info">
-                        <a class="name" href="">${val.name}</a>
-                        <div class="price flex a-center">
-                            <span class="quantity">${val.quantity}x </span>
-                            <span class="price"> $${Math.floor(val.price - val.price * val.discount / 100)}.00</span>
+                        <div class="info">
+                            <a class="name" href="">${val.name}</a>
+                            <div class="price flex a-center">
+                                <span class="quantity">${val.quantity}x </span>
+                                <span class="price"> $${Math.floor(val.price - val.price * val.discount / 100)}.00</span>
+                            </div>
                         </div>
-                    </div>
                 </div>
-                <button id="delete">X</button>     
+                    <button id="delete">X</button>
                 </div>
-            `).appendTo(".product-cart");
+        `).appendTo(".product-cart");
             })
         }
         else {

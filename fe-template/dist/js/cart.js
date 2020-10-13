@@ -4,7 +4,7 @@ $(function () {
     cart.map(val => {
         $(`
         <div data-id=${val.id} class="item">
-                    <button id="delete">X</button>
+                    <button id="delete-cart">X</button>
                     <img src=${val.img}
                         alt="">
                     <div class="name">${val.name}</div>
@@ -28,17 +28,13 @@ $(function () {
                 
         `).appendTo(".cols")
     })
-
-
-    $("#delete").click(function (e) {
+    $("#delete-cart").click(function (e) {
         e.preventDefault();
         const cartId = $(this).parents(".item").data("id");
         const idx = cart.findIndex(val => val.id === cartId);
-        console.log(idx);
-        console.log(cartId);
         cart.splice(idx, 1)
         const totalCart = cart.reduce((acc, val) => {
-            return acc + Math.floor(val.total);
+            return acc + val.total;
         }, 0);
         cart.subtotal = totalCart;
         const quantity = cart.reduce((acc, val) => {
@@ -47,13 +43,12 @@ $(function () {
         $(".blue").text(`${quantity}`);
         $(".product-cart").empty();
         if (cart.length) {
-
             $(".view-cart").css('opacity', '1')
             $(".total").text(`$${totalCart}.00`)
             cart.map(val => {
                 $(`
-                <div  class="product flex a-center j-between">
-                <div data-id=${val.id}  class="item-product flex a-center j-between">
+                <div  data-id=${val.id}   class="product flex a-center j-between">
+                <div class="item-product flex a-center j-between">
                     <img src=${val.img}
                         alt="">
                     <div class="info">
@@ -82,7 +77,7 @@ $(function () {
         cart.map(val => {
             $(`
             <div data-id=${val.id} class="item">
-                        <button id="delete">X</button>
+                        <button id="delete-cart">X</button>
                         <img src=${val.img}
                             alt="">
                         <div class="name">${val.name}</div>

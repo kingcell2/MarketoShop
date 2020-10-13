@@ -40,11 +40,8 @@
                 color: white;
                 font-size: 13px;
                 text-align: center;
-                //justify-content: flex-end;
                 font-weight: 700;
                 border-radius: 5px;
-                //margin-left: 20px;
-               // width: 10%;
                 padding: 13px;
                 transition: all 0.3s;
                 &:hover{
@@ -95,7 +92,7 @@
                 }
               
              }
-            button#delete{
+            button#delete-cart{
                 max-width: 10%;
                 color: red;
                 background: white;
@@ -107,7 +104,6 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                 //width: 12%;
                 cursor: pointer;
                 &:hover{
                     background: red;
@@ -122,12 +118,10 @@
                 margin-top: 10px;
                 margin-left: 40px;
                 width: 10%;
-               // padding: 20px 10px;
             }
             .name{
                 width: 25%;
                 margin-left: 125px;
-                //margin-top: 30px;
                 color: #0090ff;
                 font-size: 15px;
             }
