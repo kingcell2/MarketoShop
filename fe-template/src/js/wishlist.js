@@ -1,8 +1,44 @@
 $(function () {
+
     const wishlist = JSON.parse(localStorage.getItem("wishlist"));
-
-
     const cart = JSON.parse(localStorage.getItem("cart"));
+    function renderProductOnCart(cart) {
+        cart.map(val => {
+            $(`
+                <div data-id=${val.id} class="product flex a-center j-between">
+                <div  class="item-product flex a-center j-between">
+                    <img src=${val.img}
+                        alt="">
+                    <div class="info">
+                        <a class="name" href="">${val.name}</a>
+                        <div class="price flex a-center">
+                            <span class="quantity">${val.quantity}x </span>
+                            <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="delete">X</button>     
+                </div>
+            `).appendTo(".product-cart");
+        })
+    }
+    function renderWishlist(wishlist) {
+        wishlist.map(val => {
+
+            $(` <div data-id=${val.id} class="item">
+            <button id="delete-list">X</button>
+            <div class="images">
+                <img src=${val.img}
+                    alt="">
+            </div>
+            <span class="name">${val.name}</span>
+            <span class="price">$${Math.round(val.price - val.price * val.discount / 100)}.00</span>
+            <span class="quantity">In Stock</span>
+            <button id="add-list">Add to cart <i class="fas fa-check"></i></button>
+        </div>
+        `).appendTo(".cols-list")
+        })
+    }
     const quantity2 = cart.reduce((acc, val) => {
         return acc + val.quantity;
     }, 0);
@@ -11,45 +47,14 @@ $(function () {
     }, 0);
     $(".blue").text(`${quantity2}`);
     $(".product-cart").empty();
-
+    renderWishlist(wishlist)
     if (cart.length) {
         $(".no-product").css('display', 'none')
         $(".total").text(`$${totalCart}.00`)
-        cart.map(val => {
-            $(`
-            <div  data-id=${val.id}   class="product flex a-center j-between">
-            <div class="item-product flex a-center j-between">
-                <img src=${val.img}
-                    alt="">
-                <div class="info">
-                    <a class="name" href="">${val.name}</a>
-                    <div class="price flex a-center">
-                        <span class="quantity">${val.quantity}x </span>
-                        <span class="price"> $${Math.floor(val.price - val.price * val.discount / 100)}.00</span>
-                    </div>
-                </div>
-            </div>
-            <button id="delete">X</button>     
-            </div>
-        `).appendTo(".product-cart");
-        })
+        renderProductOnCart(cart)
     }
 
-    wishlist.map(val => {
 
-        $(` <div data-id=${val.id} class="item">
-        <button id="delete-list">X</button>
-        <div class="images">
-            <img src=${val.img}
-                alt="">
-        </div>
-        <span class="name">${val.name}</span>
-        <span class="price">$${Math.round(val.price - val.price * val.discount / 100)}.00</span>
-        <span class="quantity">In Stock</span>
-        <button id="add-list">Add to cart <i class="fas fa-check"></i></button>
-    </div>
-    `).appendTo(".cols-list")
-    })
     const quantity = wishlist.reduce((acc, val) => {
         return acc + val.quantity;
     }, 0);
@@ -60,45 +65,42 @@ $(function () {
         const idx = wishlist.findIndex(val => val.id === currentId);
         wishlist.splice(idx, 1)
         $(".cols-list").empty();
-        console.log(currentId);
-        console.log(idx);
         const quantity = wishlist.reduce((acc, val) => {
             return acc + val.quantity;
         }, 0);
         $(".white").text(`${quantity}`);
         if (wishlist.length) {
-            wishlist.map(val => {
-                $(` <div data-id=${val.id} class="item">
-        <button id="delete-list">X</button>
-        <div class="images">
-            <img src=${val.img}
-                alt="">
-        </div>
-        <span class="name">${val.name}</span>
-        <span class="price">${val.price}</span>
-        <span class="quantity">In Stock</span>
-        <button id="add-list">Add to cart</button>
-    </div>
-    `).appendTo(".cols-list")
-            })
+            renderWishlist(wishlist)
         }
         else {
             $(".no-list").css('display', 'block')
             $(".cols-list").css('border-bottom', 'none')
-
         }
 
     })
     $("body").on("click", "#add-list", function () {
         const currentId = $(this).parents(".item").data("id");
         const currentItem = wishlist.find((val) => val.id === currentId);
+        const currentItem2 = wishlist.findIndex((val) => val.id === currentId);
         const currentCart = cart.find((val) => val.id === currentId);
         const idx = cart.findIndex(val => val.id === currentId);
-
         if (idx === -1) {
             currentItem.quantity = 1;
             currentItem.total = Math.round((currentItem.price - currentItem.price * currentItem.discount / 100) * currentItem.quantity);
             cart.push(currentItem)
+            wishlist.splice(currentItem2, 1)
+            $(".cols-list").empty();
+            const quantity = wishlist.reduce((acc, val) => {
+                return acc + val.quantity;
+            }, 0);
+            $(".white").text(`${quantity}`);
+            if (wishlist.length) {
+                renderWishlist(wishlist)
+            }
+            else {
+                $(".no-list").css('display', 'block')
+                $(".cols-list").css('border-bottom', 'none')
+            }
             alert("Product added to cart successfully");
         }
         else {
@@ -106,7 +108,6 @@ $(function () {
             cart[idx].total = (Math.round(cart[idx].quantity * (cart[idx].price - cart[idx].price * cart[idx].discount / 100)))
             alert("The product already exists in the shopping cart, please check back!")
         }
-
         const quantity = cart.reduce((acc, val) => {
             return acc + val.quantity;
         }, 0);
@@ -119,26 +120,34 @@ $(function () {
         }
         $(".total").text(`$${total}.00`)
         $(".product-cart").empty();
-        cart.map(val => {
-            $(`
-            <div data-id=${val.id} class="product flex a-center j-between">
-            <div  class="item-product flex a-center j-between">
-                <img src=${val.img}
-                    alt="">
-                <div class="info">
-                    <a class="name" href="">${val.name}</a>
-                    <div class="price flex a-center">
-                        <span class="quantity">${val.quantity}x </span>
-                        <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
-                    </div>
-                </div>
-            </div>
-            <button id="delete">X</button>     
-            </div>
-        `).appendTo(".product-cart");
-        })
+        renderProductOnCart(cart)
 
 
         localStorage.setItem("cart", JSON.stringify(cart))
     })
+    //delete view cart
+    $("body").on("click", "#delete", function () {
+        const cartId = $(this).parents(".product").data("id");
+        const idx = cart.findIndex(val => val.id === cartId);
+        cart.splice(idx, 1)
+        const totalCart = cart.reduce((acc, val) => {
+            return acc + Math.floor(val.total);
+        }, 0);
+        cart.subtotal = totalCart;
+        const quantity = cart.reduce((acc, val) => {
+            return acc + val.quantity;
+        }, 0);
+        $(".blue").text(`${quantity} `);
+        $(".product-cart").empty();
+        if (cart.length) {
+            $(".no-product").css('display', 'none')
+            $(".view-cart").css('opacity', '1')
+            $(".total").text(`$${totalCart}.00`)
+            renderProductOnCart(cart)
+        }
+        else {
+            $(".no-product").css('display', 'block')
+            $(".total").text(`$${totalCart}.00`)
+        }
+    });
 })

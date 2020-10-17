@@ -2254,6 +2254,26 @@ $(function () {
     });
 
 
+    function renderProductOnCart(cart) {
+        cart.map(val => {
+            $(`
+                <div data-id=${val.id} class="product flex a-center j-between">
+                <div  class="item-product flex a-center j-between">
+                    <img src=${val.img}
+                        alt="">
+                    <div class="info">
+                        <a class="name" href="">${val.name}</a>
+                        <div class="price flex a-center">
+                            <span class="quantity">${val.quantity}x </span>
+                            <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="delete">X</button>     
+                </div>
+            `).appendTo(".product-cart");
+        })
+    }
 
     //add to cart
     $("body").on("click", ".add", function () {
@@ -2282,24 +2302,7 @@ $(function () {
         }
         $(".total").text(`$${total}.00`)
         $(".product-cart").empty();
-        cart.map(val => {
-            $(`
-            <div data-id=${val.id} class="product flex a-center j-between">
-            <div  class="item-product flex a-center j-between">
-                <img src=${val.img}
-                    alt="">
-                <div class="info">
-                    <a class="name" href="">${val.name}</a>
-                    <div class="price flex a-center">
-                        <span class="quantity">${val.quantity}x </span>
-                        <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
-                    </div>
-                </div>
-            </div>
-            <button id="delete">X</button>     
-            </div>
-        `).appendTo(".product-cart");
-        })
+        renderProductOnCart(cart)
         localStorage.setItem("cart", JSON.stringify(cart))
     })
     $("body").on("click", ".add-cart", function () {
@@ -2326,25 +2329,7 @@ $(function () {
         }
         $(".total").text(`$${total}.00`)
         $(".product-cart").empty();
-        cart.map(val => {
-            $(`
-            <div data-id=${val.id} class="product flex a-center j-between">
-            <div class="item-product flex a-center j-between">
-                <img src=${val.img}
-                    alt="">
-                <div class="info">
-                    <a class="name" href="">${val.name}</a>
-                    <div class="price flex a-center">
-                        <span class="quantity">${val.quantity}x </span>
-                        <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
-                    </div>
-                </div>
-                     
-            </div>
-            <button id="delete">X</button>     
-            </div>
-        `).appendTo(".product-cart");
-        })
+        renderProductOnCart(cart)
         localStorage.setItem("cart", JSON.stringify(cart))
     })
     $("body").on("click", ".add-on-view", function () {
@@ -2375,24 +2360,7 @@ $(function () {
         }
         $(".total").text(`$${total}.00`)
         $(".product-cart").empty();
-        cart.map(val => {
-            $(`
-            <div data-id=${val.id} class="product flex a-center j-between">
-            <div  class="item-product flex a-center j-between">
-                <img src=${val.img}
-                    alt="">
-                <div class="info">
-                    <a class="name" href="">${val.name}</a>
-                    <div class="price flex a-center">
-                        <span class="quantity">${val.quantity}x </span>
-                        <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
-                    </div>
-                </div>
-            </div>
-            <button id="delete">X</button>     
-            </div>
-        `).appendTo(".product-cart");
-        })
+        renderProductOnCart(cart)
         localStorage.setItem("cart", JSON.stringify(cart))
     })
 
@@ -2403,11 +2371,9 @@ $(function () {
         const idx = wishlist.findIndex(val => val.id === currentId);
         if (idx === -1) {
             currentItem.quantity = 1;
-            // currentItem.total = Math.round(currentItem.price - currentItem.price * currentItem.discount / 100) * currentItem.quantity_2;
             wishlist.push(currentItem)
         } else {
             wishlist[idx].quantity = 1;
-            // wishlist[idx].total = (Math.round(wishlist[idx].quantity_2 * (wishlist[idx].price - wishlist[idx].price * wishlist[idx].discount / 100)))
         }
         const quantity = wishlist.reduce((acc, val) => {
             return acc + val.quantity;
@@ -2418,60 +2384,6 @@ $(function () {
     })
 
 
-    $("body").on("click", ".update", function () {
-        const currentId = $(this).parents(".item").data("id");
-        const currentItem = products.find((val) => val.id === currentId);
-        const idx = cart.findIndex(val => val.id === currentId);
-        let quantity_input = $("#quantity").val()
-        if (idx === -1) {
-            currentItem.quantity = 0;
-            currentItem.quantity = parseInt(quantity_input);
-            currentItem.total = Math.round((currentItem.price - currentItem.price * currentItem.discount / 100) * currentItem.quantity);
-            cart.push(currentItem)
-            //onst subtotal = cart.map(val => Math.round(val.price - val.price * val.discount / 100) * val.quantity)
-
-        }
-        else {
-            cart[idx].quantity = parseInt(quantity_input);
-            cart[idx].total = (Math.round(cart[idx].quantity * (cart[idx].price - cart[idx].price * cart[idx].discount / 100)))
-            //cart.push(currentItem)
-            //  const subtotal = cart.map(val => Math.round(val.price - val.price * val.discount / 100) * val.quantity)
-            $(".subtotal").text(`$${cart.total}.00`)
-        }
-        $(".subtotal").text(`$${currentItem.total}.00`)
-
-        const quantity = cart.reduce((acc, val) => {
-            return acc + val.quantity;
-        }, 0);
-        $(".blue").text(`${quantity}`);
-        const total = cart.reduce((acc, val) => {
-            return acc + val.total;
-        }, 0);
-        if (cart.length > 0) {
-            $(".no-product").css('display', 'none')
-        }
-        $(".total").text(`$${total}.00`)
-        $(".product-cart").empty();
-        cart.map(val => {
-            $(`
-                <div data-id=${val.id} class="product flex a-center j-between" >
-                    <div class="item-product flex a-center j-between">
-                        <img src=${val.img}
-                            alt="">
-                            <div class="info">
-                                <a class="name" href="">${val.name}</a>
-                                <div class="price flex a-center">
-                                    <span class="quantity">${val.quantity}x </span>
-                                    <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
-                                </div>
-                            </div>
-            </div>
-                        <button id="delete">X</button>
-                    </div>
-        `).appendTo(".product-cart");
-        })
-        localStorage.setItem("cart", JSON.stringify(cart))
-    })
     //delete view cart
     $("body").on("click", "#delete", function () {
         const cartId = $(this).parents(".product").data("id");
@@ -2491,24 +2403,7 @@ $(function () {
         if (cart.length) {
             $(".view-cart").css('opacity', '1')
             $(".total").text(`$${totalCart} .00`)
-            cart.map(val => {
-                $(`
-            <div  data-id=${val.id} class="product flex a-center j-between" >
-                <div class="item-product flex a-center j-between">
-                    <img src=${val.img}
-                        alt="">
-                        <div class="info">
-                            <a class="name" href="">${val.name}</a>
-                            <div class="price flex a-center">
-                                <span class="quantity">${val.quantity}x </span>
-                                <span class="price"> $${Math.floor(val.price - val.price * val.discount / 100)}.00</span>
-                            </div>
-                        </div>
-                </div>
-                    <button id="delete">X</button>
-                </div>
-        `).appendTo(".product-cart");
-            })
+            renderProductOnCart(cart)
         }
         else {
             $(".no-product").css('display', 'block')
@@ -2556,19 +2451,15 @@ $(function () {
                 $quantity.val(value - 1);
             }
             $(".update").css('display', 'flex')
-
-
         })
         $('form').on('click', '.inc-button', function () {
             var $quantity = $(this).siblings('#quantity'),
                 value = +$quantity.val();
-
-
             if (value < 1000) {
                 $quantity.val(value + 1);
             }
             $(".update").css('display', 'flex')
         });
-
     })
+
 })

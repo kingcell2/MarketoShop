@@ -9,15 +9,16 @@ $(function () {
             <div class="col">
                 <div class="col-left">
                     <div class="col-img-head ">
-                        <img src=${val.img}
+                        <img id="zoom" src="${val.img}"
                             alt="">
                         </div>
-                    <div class="col-img-under flex">
-                        <img src=${val.gallery.slice(0, 1)}
+                        
+                    <div id="gallery-list" class="col-img-under flex">        
+                        <img  src=${val.gallery.slice(0, 1)}
                             alt="">
-                        <img src=${val.gallery.slice(1, 2)}
+                        <img  src=${val.gallery.slice(1, 2)}
                             alt="">
-                        <img src=${val.gallery.slice(2, 3)}
+                        <img  src=${val.gallery.slice(2, 3)}
                             alt="">
                         <img src=${val.gallery.slice(3, 4)}
                             alt="">
@@ -77,7 +78,12 @@ $(function () {
         </div>`).appendTo(".viewproduct")
     })
 
+    $('#zoom').ezPlus({
+        zoomType: 'lens',
+        lensShape: 'round',
+        //lensSize: 50
 
+    });
 
     $(".add-on-view").click(function (e) {
         e.preventDefault();

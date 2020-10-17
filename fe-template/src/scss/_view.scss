@@ -36,15 +36,16 @@
     }
     .col{
         display: flex;
-        justify-content: center;
-        align-items: center;
+     //   justify-content: center;
+       // align-items: center;
         .col-left{
             width: 50%;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             img{
-                width: 80%;
+                width: 400px;
+                height: 400px;
             }
             .col-img-head{
                 //margin-top: 50px;
@@ -52,6 +53,7 @@
                 justify-content: center;
                 align-items: center;
                 text-align: center;
+                
             }
             .col-img-under{
                 margin-top: 100px;

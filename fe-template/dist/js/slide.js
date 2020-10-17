@@ -23,7 +23,8 @@ $(function () {
             "<i style='color: #53a1f8' class='fas fa-arrow-left'></i>",
             "<i style='color: #53a1f8;' class='fas fa-arrow-right'></i>"
         ],
-        animateOut: "fadeOut",
+        //animateOut: true,
+        animateIn: "fadeIn",
 
     });
 });

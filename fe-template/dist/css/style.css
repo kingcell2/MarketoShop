@@ -3225,8 +3225,6 @@ footer .payment img:hover {
 
 .viewproduct .col {
 	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .viewproduct .col .col-left {
@@ -3237,7 +3235,8 @@ footer .payment img:hover {
 }
 
 .viewproduct .col .col-left img {
-	width: 80%;
+	width: 400px;
+	height: 400px;
 }
 
 .viewproduct .col .col-left .col-img-head {
