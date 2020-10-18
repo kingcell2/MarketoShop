@@ -1,5 +1,7 @@
 $(function () {
     const cart = JSON.parse(localStorage.getItem("cart"));
+    const wishlist = JSON.parse(localStorage.getItem("wishlist"));
+
 
     cart.map(val => {
         $(` <div class="href">
@@ -53,12 +55,11 @@ $(function () {
                         </form>
                         <div class="cart">
                             <button class="add-on-view">Add to cart<i class="fas fa-check"></i></button>
-                            
                         </div>
                         </div>
                         <div class="icon flex">
                             <div class="heart">
-                                <i class="fas fa-heart"></i>
+                                <a class="wishlist-view"><i class="fas fa-heart"></i></a>
                             </div>
                             <div class="compare">
                                 <i class="fas fa-recycle"></i>
@@ -94,12 +95,12 @@ $(function () {
             'position': 'fixed',
             'right': '0',
             'transition': 'all 1s',
+            'z-index': 101,
         });
         $(".menu").css({
             'z-index': '2',
         });
         $('.blackbg').css('visibility') === 'hidden'
-        $('.cart-item').css('z-index', 100);
         $('.blackbg').css('visibility', 'visible');
         $("#exit").click(function (e) {
             e.preventDefault();
@@ -108,10 +109,10 @@ $(function () {
                 'right': '-30%'
             });
             $('.blackbg').css('visibility', 'hidden');
-            $('.cart-item').css('z-index', 2);
-            $(".menu").css({
-                'z-index': '100',
-            });
+            $('.cart-item').css('z-index', 100);
+
         });
     });
+
+
 })

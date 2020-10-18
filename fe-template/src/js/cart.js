@@ -2,17 +2,17 @@ $(function () {
     const cart = JSON.parse(localStorage.getItem("cart"));
     // console.log(cart);
     renderViewCart(cart)
-    const total = cart.reduce((acc, val) => {
+    const total_cart = cart.reduce((acc, val) => {
         return acc + val.total;
     }, 0);
-    const quantity = cart.reduce((acc, val) => {
-        return acc + val.quantity;
+    const quantity_cart = cart.reduce((acc, val) => {
+        return acc + val.quantity_add;
     }, 0);
-    $(".blue").text(`${quantity}`);
+    $(".blue").text(`${quantity_cart}`);
     if (cart.length > 0) {
         $(".no-product").css('display', 'none')
     }
-    $(".total").text(`$${total}.00`)
+    $(".total").text(`$${total_cart}.00`)
     $(".product-cart").empty();
     renderProductOnCart(cart)
 
@@ -31,12 +31,12 @@ $(function () {
                         <form class="flex a-center" action="#">
                             <div class="btn flex  a-center">
                                 <div class="dec-button">-</div>
-                                <input type="text" class="quantity_" id="quantity" value=${val.quantity}>
+                                <input type="text" class="quantity_" id="quantity" value=${val.quantity_add}>
                                 <div class="inc-button">+</div>
                             </div>
                         </form>
                         <div class="subtotal">$${Math.round(val.price - val.price * val.discount / 100) *
-                val.quantity}.00
+                val.quantity_add}.00
                         </div>
                         <button class="update" >Update Cart</button>
                     </div>
@@ -103,20 +103,20 @@ $(function () {
         const currentId = $(this).parents(".item").data("id");
         const idx = cart.find(val => val.id === currentId);
         let quantity_input = $(".quantity_").val()
-        idx.quantity = parseInt(quantity_input);
-        idx.total = (Math.round(idx.quantity * (idx.price - idx.price * idx.discount / 100)))
+        idx.quantity_add = parseInt(quantity_input);
+        idx.total = (Math.round(idx.quantity_add * (idx.price - idx.price * idx.discount / 100)))
         // cart.push(idx)
-        const quantity = cart.reduce((acc, val) => {
-            return acc + val.quantity;
+        const quantity_cart = cart.reduce((acc, val) => {
+            return acc + val.quantity_add;
         }, 0);
-        $(".blue").text(`${quantity}`);
-        const total = cart.reduce((acc, val) => {
+        $(".blue").text(`${quantity_cart}`);
+        const total_cart = cart.reduce((acc, val) => {
             return acc + val.total;
         }, 0);
         if (cart.length > 0) {
             $(".no-product").css('display', 'none')
         }
-        $(".total").text(`$${total}.00`)
+        $(".total").text(`$${total_cart}.00`)
         $(".product-cart").empty();
         renderProductOnCart(cart)
         $(".cols").empty();
@@ -129,21 +129,20 @@ $(function () {
         const cartId = $(this).parents(".product").data("id");
         //const currentItem = products.find((val) => val.id === cartId);
         const idx = cart.findIndex(val => val.id === cartId);
-        console.log(cartId);
         cart.splice(idx, 1)
-        const totalCart = cart.reduce((acc, val) => {
-            return acc + Math.floor(val.total);
+        const total_cart = cart.reduce((acc, val) => {
+            return acc + val.total;
         }, 0);
-        cart.subtotal = totalCart;
-        const quantity = cart.reduce((acc, val) => {
-            return acc + val.quantity;
+        cart.subtotal = total_cart;
+        const quantity_cart = cart.reduce((acc, val) => {
+            return acc + val.quantity_add;
         }, 0);
-        $(".blue").text(`${quantity} `);
+        $(".blue").text(`${quantity_cart}`);
         $(".product-cart").empty();
         if (cart.length) {
             $(".no-product").css('display', 'none')
             $(".view-cart").css('opacity', '1')
-            $(".total").text(`$${totalCart}.00`)
+            $(".total").text(`$${total_cart}.00`)
             renderProductOnCart(cart)
         }
         else {
@@ -153,7 +152,7 @@ $(function () {
             $(".no-product").css('display', 'block')
             $(".row.a").css('display', 'none')
             $(".code").css('display', 'none')
-            $(".total").text(`$${totalCart}.00`)
+            $(".total").text(`$${total_cart}.00`)
         }
         $(".cols").empty();
         renderViewCart(cart)

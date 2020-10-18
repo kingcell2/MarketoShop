@@ -1,6 +1,7 @@
 $(function () {
     let cart = [];
     let wishlist = [];
+    let view = [];
     const products = [
         {
             id: 1,
@@ -1051,7 +1052,7 @@ $(function () {
                                 </div>
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
-                                    <a ><i class="far fa-eye"></i></a>
+                                    <a class="view-on-screen"><i class="far fa-eye"></i></a>
                                     <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
@@ -1074,7 +1075,7 @@ $(function () {
                                 </div>
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
-                                    <a ><i class="far fa-eye"></i></a>
+                                    <a class="view-on-screen" ><i class="far fa-eye"></i></a>
                                     <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
@@ -1162,7 +1163,7 @@ $(function () {
                                 </div>
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
-                                    <a ><i class="far fa-eye"></i></a>
+                                    <a class="view-on-screen" ><i class="far fa-eye"></i></a>
                                     <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
@@ -1185,7 +1186,7 @@ $(function () {
                                 </div>
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
-                                    <a ><i class="far fa-eye"></i></a>
+                                    <a  class="view-on-screen"><i class="far fa-eye"></i></a>
                                     <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
@@ -1274,7 +1275,7 @@ $(function () {
                                 </div>
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
-                                    <a ><i class="far fa-eye"></i></a>
+                                    <a  class="view-on-screen"><i class="far fa-eye"></i></a>
                                     <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
@@ -1297,7 +1298,7 @@ $(function () {
                                 </div>
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
-                                    <a ><i class="far fa-eye"></i></a>
+                                    <a class="view-on-screen" ><i class="far fa-eye"></i></a>
                                     <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
@@ -1386,7 +1387,7 @@ $(function () {
                                 </div>
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
-                                    <a ><i class="far fa-eye"></i></a>
+                                    <a  class="view-on-screen"><i class="far fa-eye"></i></a>
                                     <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
@@ -1409,7 +1410,7 @@ $(function () {
                                 </div>
                                 <div class="icons">
                                     <a class="add-cart" ><i class="fab fa-opencart"></i></a>
-                                    <a ><i class="far fa-eye"></i></a>
+                                    <a class="view-on-screen" ><i class="far fa-eye"></i></a>
                                     <a class="wishlist"><i class="far fa-heart"></i></a>
                                 </div>
                             </div>
@@ -2231,13 +2232,14 @@ $(function () {
         $(".cart-item").css({
             'position': 'fixed',
             'right': '0',
-            'transition': 'all 0.3s',
+            'transition': 'all 1s',
+            'z-index': 101,
         });
         $(".menu").css({
             'z-index': '2',
         });
         $('.blackbg').css('visibility') === 'hidden'
-        $('.cart-item').css('z-index', 100);
+
         $('.blackbg').css('visibility', 'visible');
         $("#exit").click(function (e) {
             e.preventDefault();
@@ -2246,10 +2248,8 @@ $(function () {
                 'right': '-30%'
             });
             $('.blackbg').css('visibility', 'hidden');
-            $('.cart-item').css('z-index', 2);
-            $(".menu").css({
-                'z-index': '100',
-            });
+            $('.cart-item').css('z-index', 100);
+
         });
     });
 
@@ -2264,7 +2264,7 @@ $(function () {
                     <div class="info">
                         <a class="name" href="">${val.name}</a>
                         <div class="price flex a-center">
-                            <span class="quantity">${val.quantity}x </span>
+                            <span class="quantity">${val.quantity_add}x </span>
                             <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
                         </div>
                     </div>
@@ -2274,33 +2274,78 @@ $(function () {
             `).appendTo(".product-cart");
         })
     }
-
+    function renderViewproduct(cart) {
+        cart.map(val => {
+            $(` <button id="pop">X</button>
+                <div class="col">
+                    <div class="col-left">
+                        <div class="col-img-head ">
+                            <img id="zoom" src="${val.img}"
+                                alt="">
+                            </div>
+                    </div>
+                    <div class="col-right">
+                        <div data-id=${val.id} class="item">
+                            <h3>${val.name}</h3>
+                            <p>Categories: <span class="categories">${val.categories}</span> </p>
+                            <br>
+                            <div class="star flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <p class="review">(4 customer reviews)</p>
+                            </div>
+                            <span class="description">${val.description}</span>
+                            <div class="price">
+                                <span class="price-default">$${val.price}.00</span> <br>
+                                <span class="price-discount">$${Math.round(val.price - (val.price * val.discount / 100))}.00</span>
+                            </div>
+                            <div class="flex a-center">
+                            <form class="flex a-center" action="#">
+                                <div class="btn flex  a-center">
+                                    <div class="dec-button">-</div>
+                                    <input type="text" id="quantity" value="1">
+                                    <div class="inc-button">+</div>
+                                </div>
+                            </form>
+                            <div class="cart">
+                                <button class="add-on-view">Add to cart</button>                        
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`).appendTo(".viewproducts")
+        })
+    }
     //add to cart
     $("body").on("click", ".add", function () {
         const currentId = $(this).parents(".item").data("id");
         const currentItem = products.find((val) => val.id === currentId);
         const idx = cart.findIndex(val => val.id === currentId);
         if (idx === -1) {
-            currentItem.quantity = 1;
-            currentItem.total = Math.round((currentItem.price - currentItem.price * currentItem.discount / 100) * currentItem.quantity);
+            currentItem.quantity_add = 1;
+            currentItem.total = Math.round((currentItem.price - currentItem.price * currentItem.discount / 100) * currentItem.quantity_add);
             cart.push(currentItem)
         }
         else {
-            cart[idx].quantity += 1;
-            cart[idx].total = (Math.round(cart[idx].quantity * (cart[idx].price - cart[idx].price * cart[idx].discount / 100)))
+            cart[idx].quantity_add += 1;
+            cart[idx].total = (Math.round(cart[idx].quantity_add * (cart[idx].price - cart[idx].price * cart[idx].discount / 100)))
 
         }
-        const quantity = cart.reduce((acc, val) => {
-            return acc + val.quantity;
+        const quantity_cart = cart.reduce((acc, val) => {
+            return acc + val.quantity_add;
         }, 0);
-        $(".blue").text(`${quantity}`);
-        const total = cart.reduce((acc, val) => {
+        $(".blue").text(`${quantity_cart}`);
+        const total_cart = cart.reduce((acc, val) => {
             return acc + val.total;
         }, 0);
         if (cart.length > 0) {
             $(".no-product").css('display', 'none')
         }
-        $(".total").text(`$${total}.00`)
+        $(".total").text(`$${total_cart}.00`)
         $(".product-cart").empty();
         renderProductOnCart(cart)
         localStorage.setItem("cart", JSON.stringify(cart))
@@ -2310,24 +2355,24 @@ $(function () {
         const currentItem = products.find((val) => val.id === currentId);
         const idx = cart.findIndex(val => val.id === currentId);
         if (idx === -1) {
-            currentItem.quantity = 1;
-            currentItem.total = Math.round(currentItem.price - currentItem.price * currentItem.discount / 100) * currentItem.quantity;
+            currentItem.quantity_add = 1;
+            currentItem.total = Math.round(currentItem.price - currentItem.price * currentItem.discount / 100) * currentItem.quantity_add;
             cart.push(currentItem)
         } else {
-            cart[idx].quantity += 1;
-            cart[idx].total = (Math.round(cart[idx].quantity * (cart[idx].price - cart[idx].price * cart[idx].discount / 100)))
+            cart[idx].quantity_add += 1;
+            cart[idx].total = (Math.round(cart[idx].quantity_add * (cart[idx].price - cart[idx].price * cart[idx].discount / 100)))
         }
-        const quantity = cart.reduce((acc, val) => {
-            return acc + val.quantity;
+        const quantity_cart = cart.reduce((acc, val) => {
+            return acc + val.quantity_add;
         }, 0);
-        $(".blue").text(`${quantity}`);
-        const total = cart.reduce((acc, val) => {
+        $(".blue").text(`${quantity_cart}`);
+        const total_cart = cart.reduce((acc, val) => {
             return acc + val.total;
         }, 0);
         if (cart.length > 0) {
             $(".no-product").css('display', 'none')
         }
-        $(".total").text(`$${total}.00`)
+        $(".total").text(`$${total_cart}.00`)
         $(".product-cart").empty();
         renderProductOnCart(cart)
         localStorage.setItem("cart", JSON.stringify(cart))
@@ -2336,86 +2381,158 @@ $(function () {
         const currentId = $(this).parents(".item").data("id");
         const currentItem = products.find((val) => val.id === currentId);
         const idx = cart.findIndex(val => val.id === currentId);
+        const idx_view = view.findIndex(val => val.id === currentId);
         let quantity_input = $("#quantity").val()
         if (idx === -1) {
-            currentItem.quantity = 0;
-            currentItem.quantity += parseInt(quantity_input);
-            currentItem.total = Math.round((currentItem.price - currentItem.price * currentItem.discount / 100) * currentItem.quantity);
+            currentItem.quantity_add = 0;
+            currentItem.quantity_add += parseInt(quantity_input);
+            currentItem.total = Math.round((currentItem.price - currentItem.price * currentItem.discount / 100) * currentItem.quantity_add);
             cart.push(currentItem)
         }
         else {
-            cart[idx].quantity += parseInt(quantity_input);
-            cart[idx].total = (Math.round(cart[idx].quantity * (cart[idx].price - cart[idx].price * cart[idx].discount / 100)))
+            cart[idx].quantity_add += parseInt(quantity_input);
+            cart[idx].total = (Math.round(cart[idx].quantity_add * (cart[idx].price - cart[idx].price * cart[idx].discount / 100)))
         }
 
-        const quantity = cart.reduce((acc, val) => {
-            return acc + val.quantity;
+        const quantity_cart = cart.reduce((acc, val) => {
+            return acc + val.quantity_add;
         }, 0);
-        $(".blue").text(`${quantity}`);
-        const total = cart.reduce((acc, val) => {
+        $(".blue").text(`${quantity_cart}`);
+        const total_cart = cart.reduce((acc, val) => {
             return acc + val.total;
         }, 0);
         if (cart.length > 0) {
             $(".no-product").css('display', 'none')
         }
-        $(".total").text(`$${total}.00`)
+        $(".total").text(`$${total_cart}.00`)
         $(".product-cart").empty();
         renderProductOnCart(cart)
+        view.pop(idx_view)
+        $(".viewproducts").css({
+            'top': '-100%',
+            'transition': 'all 1s',
+        })
+        $(".menu").css({
+            'z-index': '2',
+        });
+        $(".cart-item").css({
+            'position': 'fixed',
+            'right': '0',
+            'transition': 'all 1s',
+            'z-index': 1000,
+        });
+        $("#exit").click(function (e) {
+            e.preventDefault();
+            $(".cart-item").css({
+                'position': 'fixed',
+                'right': '-30%'
+            });
+            $('.blackbg').css('visibility', 'hidden');
+            $('.cart-item').css('z-index', 2);
+            $(".menu").css({
+                'z-index': '100',
+            });
+        });
         localStorage.setItem("cart", JSON.stringify(cart))
     })
-
-
+    //add to wishlist
     $("body").on("click", ".wishlist", function () {
         const currentId = $(this).parents(".item-6").data("id");
         const currentItem = products.find((val) => val.id === currentId);
         const idx = wishlist.findIndex(val => val.id === currentId);
         if (idx === -1) {
-            currentItem.quantity = 1;
+            currentItem.quantity_add = 1;
             wishlist.push(currentItem)
         } else {
-            wishlist[idx].quantity = 1;
+            wishlist[idx].quantity_add = 1;
         }
-        const quantity = wishlist.reduce((acc, val) => {
-            return acc + val.quantity;
+        const quantity_wishlist = wishlist.reduce((acc, val) => {
+            return acc + val.quantity_add;
         }, 0);
-        $(".white").text(`${quantity}`);
+        $(".white").text(`${quantity_wishlist}`);
         localStorage.setItem("wishlist", JSON.stringify(wishlist))
-
     })
-
-
+    $("body").on("click", ".wishlist-view", function () {
+        const currentId = $(this).parents(".item").data("id");
+        const currentItem = products.find((val) => val.id === currentId);
+        const idx = wishlist.findIndex(val => val.id === currentId);
+        if (idx === -1) {
+            currentItem.quantity_add = 1;
+            wishlist.push(currentItem)
+        } else {
+            wishlist[idx].quantity_add = 1;
+        }
+        const quantity_wishlist = wishlist.reduce((acc, val) => {
+            return acc + val.quantity_add;
+        }, 0);
+        $(".white").text(`${quantity_wishlist}`);
+        localStorage.setItem("wishlist", JSON.stringify(wishlist))
+    })
     //delete view cart
     $("body").on("click", "#delete", function () {
         const cartId = $(this).parents(".product").data("id");
-        //const currentItem = products.find((val) => val.id === cartId);
         const idx = cart.findIndex(val => val.id === cartId);
-        console.log(cartId);
         cart.splice(idx, 1)
-        const totalCart = cart.reduce((acc, val) => {
-            return acc + Math.floor(val.total);
+        const total_cart = cart.reduce((acc, val) => {
+            return acc + val.total;
         }, 0);
-        cart.subtotal = totalCart;
-        const quantity = cart.reduce((acc, val) => {
-            return acc + val.quantity;
+        cart.subtotal = total_cart;
+        const quantity_cart = cart.reduce((acc, val) => {
+            return acc + val.quantity_add;
         }, 0);
-        $(".blue").text(`${quantity} `);
+        $(".blue").text(`${quantity_cart} `);
         $(".product-cart").empty();
         if (cart.length) {
             $(".view-cart").css('opacity', '1')
-            $(".total").text(`$${totalCart} .00`)
+            $(".total").text(`$${total_cart} .00`)
             renderProductOnCart(cart)
         }
         else {
             $(".no-product").css('display', 'block')
-            $(".total").text(`$${totalCart}.00`)
+            $(".total").text(`$${total_cart}.00`)
         }
 
     });
 
+    //click to icon view product
+    $("body").on("click", ".view-on-screen", function () {
+        const currentId = $(this).parents(".item-6").data("id");
+        const currentItem = products.find((val) => val.id === currentId);
+        //  const idx_view = view.findIndex(val => val.id === currentId);
+        //  console.log(idx_view);
+        view.push(currentItem)
+        $(".viewproducts").css({
+            'top': '0',
+            'transition': 'all 1s',
+            'z-index': 1000,
+        })
+        $('.blackbg').css({
+            'visibility': 'visible',
+            'opacity': '0.7',
+        });
+        $('.viewproducts').empty();
+        renderViewproduct(view)
+    })
+    $("body").on("click", "#pop", function () {
+        $(".viewproducts").css({
+            'top': '-100%',
+            'transition': 'all 1s',
+        })
+        $('.blackbg').css({
+            'visibility': 'hidden',
+            'transition': 'all 1s',
+            'z-index': 101,
+        });
+        const currentId = $(this).parents(".item-6").data("id");
+        const idx_view = view.findIndex(val => val.id === currentId);
+        view.pop(idx_view)
+
+    })
     //click on view product
     $("body").on("click", "#view-item", function () {
         const data_id = $(this).parents(".item").data("id");
         const item = products.find(val => val.id === data_id)
+        item.quantity_add = 1;
         cart.push(item);
         localStorage.setItem("cart", JSON.stringify(cart))
 
@@ -2423,6 +2540,7 @@ $(function () {
     $("body").on("click", "#view-item-2", function () {
         const data_id = $(this).parents(".item-6").data("id");
         const item = products.find(val => val.id === data_id)
+        item.quantity_add = 1;
         cart.push(item);
         localStorage.setItem("cart", JSON.stringify(cart))
 
@@ -2430,6 +2548,7 @@ $(function () {
     $("body").on("click", "#view-item-3", function () {
         const data_id = $(this).parents(".item-12").data("id");
         const item = products.find(val => val.id === data_id)
+        item.quantity_add = 1;
         cart.push(item);
         localStorage.setItem("cart", JSON.stringify(cart))
 
@@ -2437,6 +2556,7 @@ $(function () {
     $("body").on("click", "#view-item-4", function () {
         const data_id = $(this).parents(".product").data("id");
         const item = products.find(val => val.id === data_id)
+        item.quantity_add = 1;
         cart.push(item);
         localStorage.setItem("cart", JSON.stringify(cart))
 

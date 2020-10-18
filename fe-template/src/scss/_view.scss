@@ -36,8 +36,6 @@
     }
     .col{
         display: flex;
-     //   justify-content: center;
-       // align-items: center;
         .col-left{
             width: 50%;
             justify-content: center;
@@ -48,7 +46,6 @@
                 height: 400px;
             }
             .col-img-head{
-                //margin-top: 50px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -194,11 +191,14 @@
                 .icon{
                    margin-top: 15px;
                     .heart{
+                        a{
+                        cursor: pointer;
                         color: #83b735;
                         font-size: 12px;
                         border: 1px solid #cdcdd6;
                         padding: 10px 30px;
                         border-radius: 5px;
+                        }
                     }
                     .compare{
                         color: #99a3b3;

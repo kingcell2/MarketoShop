@@ -30,10 +30,10 @@ $(function () {
     const total = cart.reduce((acc, val) => {
         return acc + val.total;
     }, 0);
-    const quantity = cart.reduce((acc, val) => {
+    const quantity_cart = cart.reduce((acc, val) => {
         return acc + val.quantity;
     }, 0);
-    $(".blue").text(`${quantity}`);
+    $(".blue").text(`${quantity_cart}`);
 
     if (cart.length > 0) {
         $(".no-product").css('display', 'none')

@@ -2225,6 +2225,197 @@ header{
 }
 .today-gadgets{
     margin-top: 50px;
+    .viewproducts{
+        margin-top: 20px;
+        background: white;
+        border: 1px solid #333333;
+        border-radius: 10px;
+        height: 95vh;
+        width: 1200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;    
+        top: -100%;
+        left: 6%; 
+        button#pop{
+            position: absolute;
+            top: 1%;
+            right: 1%;
+            color: #e3e3e3;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            &:hover{
+                color: red;
+            }
+        }
+        .col{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           // margin-top: 50px;
+            .col-left{
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img{
+                    width: 400px;
+                    height: 400px;
+                }
+
+            }
+            .col-right{
+                align-items: center;
+                width: 50%;
+                .item{
+                    h3{
+                        font-weight: 600;
+                        color: #222222;
+                        font-size: 20px;
+                        margin-bottom: 10px;
+                    }            
+                    p{
+                        font-size: 14px;
+                        color: #222222;  
+                        &.review{
+                            margin-left: 10px;
+                        }        
+                        .categories{
+                            font-size: 14px;
+                            color: #007bff;  
+                            &:hover{
+                                color: #05305fd7;
+                            }             
+                        }     
+                    }
+                    .star{
+                        color: orange;
+                        font-size: 14px;
+                        margin-bottom: 15px;
+                    }
+                    span.description{
+                        font-size: 14px;
+                        color: #222222;   
+                    }
+                    .price{
+                        margin-top: 15px;
+                        margin-bottom: 15px;
+                       .price-default{
+                           font-size: 20px;
+                           font-weight: 600;
+                           color: #cdcdd6;
+                           text-decoration: line-through;
+                       }
+                       .price-discount{
+                           font-size: 30px;
+                           font-weight: 700;
+                           color: #83b735            
+                       }
+                    }
+                    form{
+                       .btn{
+                        border: 1px solid #cdcdd6;  
+                        .dec-button{
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 50px;
+                            height: 50px;
+                            background: #dfdfe9;
+                            color: #222222;
+                            transition: all 0.3s;
+                            &:hover{
+                                background: #cacadd;
+                            }
+                        }
+                        .inc-button{
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 50px;
+                            height: 50px;
+                            background: #dfdfe9;
+                            color: #222222;
+                            transition: all 0.3s;
+                            &:hover{
+                                background: #cacadd;
+                            }
+                        }
+                        input{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 50px;
+                            text-align: center;
+                        }
+                       }
+                     
+                    }
+                    .cart{
+                        button{
+                         cursor: pointer;
+                         margin-left: 30px;
+                         padding: 17px 45px;
+                         border-radius: 5px;
+                         color: white;
+                         font-weight: 800;
+                         font-size: 18;
+                         background: #007bff;
+                         overflow: hidden;
+                         z-index: 10;
+                         position: relative;
+                         i.fas{
+                            opacity: 0;
+                            margin-left: 10px;
+                          }
+                         &::before{
+                             position: absolute;
+                             content: "";
+                             top: -5%;
+                             left: 100%;
+                             border-radius: 20px;
+                             width: 110%;
+                             height: 110%;
+                             background: #83b735;
+                             transition: all 0.3s ease;
+                             z-index: -1;                           
+                         }
+                         &:hover{
+                             &::before{
+                              left: -5%;
+                             }
+                         }
+                        }
+                        
+                        
+                    }
+                    .icon{
+                       margin-top: 15px;
+                        .heart{
+                            color: #83b735;
+                            font-size: 12px;
+                            border: 1px solid #cdcdd6;
+                            padding: 10px 30px;
+                            border-radius: 5px;
+                        }
+                        .compare{
+                            color: #99a3b3;
+                            border: 1px solid #cdcdd6;
+                            padding: 10px 30px;
+                            font-size: 12px;
+                            border-radius: 5px;
+                            margin-left: 10px;
+                            
+                        }
+                    }
+                   }
+            }
+       }
+    }
     .title{
         border-bottom: 1px solid #cfc8c8;
         margin-bottom: 20px;

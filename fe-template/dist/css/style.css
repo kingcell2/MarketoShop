@@ -2476,6 +2476,213 @@ header ul li a {
 	margin-top: 50px;
 }
 
+.today-gadgets .viewproducts {
+	position: fixed;
+	top: -100%;
+	left: 6%;
+	display: flex;
+	width: 1200px;
+	height: 95vh;
+	margin-top: 20px;
+	border: 1px solid #333;
+	border-radius: 10px;
+	background: white;
+	justify-content: center;
+	align-items: center;
+}
+
+.today-gadgets .viewproducts button#pop {
+	font-size: 20px;
+	position: absolute;
+	top: 1%;
+	right: 1%;
+	cursor: pointer;
+	transition: all .3s;
+	color: #e3e3e3;
+}
+
+.today-gadgets .viewproducts button#pop:hover {
+	color: red;
+}
+
+.today-gadgets .viewproducts .col {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.today-gadgets .viewproducts .col .col-left {
+	display: flex;
+	width: 50%;
+	justify-content: center;
+	align-items: center;
+}
+
+.today-gadgets .viewproducts .col .col-left img {
+	width: 400px;
+	height: 400px;
+}
+
+.today-gadgets .viewproducts .col .col-right {
+	width: 50%;
+	align-items: center;
+}
+
+.today-gadgets .viewproducts .col .col-right .item h3 {
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	color: #222;
+}
+
+.today-gadgets .viewproducts .col .col-right .item p {
+	font-size: 14px;
+	color: #222;
+}
+
+.today-gadgets .viewproducts .col .col-right .item p.review {
+	margin-left: 10px;
+}
+
+.today-gadgets .viewproducts .col .col-right .item p .categories {
+	font-size: 14px;
+	color: #007bff;
+}
+
+.today-gadgets .viewproducts .col .col-right .item p .categories:hover {
+	color: #05305fd7;
+}
+
+.today-gadgets .viewproducts .col .col-right .item .star {
+	font-size: 14px;
+	margin-bottom: 15px;
+	color: orange;
+}
+
+.today-gadgets .viewproducts .col .col-right .item span.description {
+	font-size: 14px;
+	color: #222;
+}
+
+.today-gadgets .viewproducts .col .col-right .item .price {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.today-gadgets .viewproducts .col .col-right .item .price .price-default {
+	font-size: 20px;
+	font-weight: 600;
+	text-decoration: line-through;
+	color: #cdcdd6;
+}
+
+.today-gadgets .viewproducts .col .col-right .item .price .price-discount {
+	font-size: 30px;
+	font-weight: 700;
+	color: #83b735;
+}
+
+.today-gadgets .viewproducts .col .col-right .item form .btn {
+	border: 1px solid #cdcdd6;
+}
+
+.today-gadgets .viewproducts .col .col-right .item form .btn .dec-button {
+	display: flex;
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	transition: all .3s;
+	color: #222;
+	background: #dfdfe9;
+	justify-content: center;
+	align-items: center;
+}
+
+.today-gadgets .viewproducts .col .col-right .item form .btn .dec-button:hover {
+	background: #cacadd;
+}
+
+.today-gadgets .viewproducts .col .col-right .item form .btn .inc-button {
+	display: flex;
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	transition: all .3s;
+	color: #222;
+	background: #dfdfe9;
+	justify-content: center;
+	align-items: center;
+}
+
+.today-gadgets .viewproducts .col .col-right .item form .btn .inc-button:hover {
+	background: #cacadd;
+}
+
+.today-gadgets .viewproducts .col .col-right .item form .btn input {
+	display: flex;
+	width: 50px;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+
+.today-gadgets .viewproducts .col .col-right .item .cart button {
+	font-size: 18;
+	font-weight: 800;
+	position: relative;
+	z-index: 10;
+	overflow: hidden;
+	margin-left: 30px;
+	padding: 17px 45px;
+	cursor: pointer;
+	color: white;
+	border-radius: 5px;
+	background: #007bff;
+}
+
+.today-gadgets .viewproducts .col .col-right .item .cart button i.fas {
+	margin-left: 10px;
+	opacity: 0;
+}
+
+.today-gadgets .viewproducts .col .col-right .item .cart button::before {
+	position: absolute;
+	z-index: -1;
+	top: -5%;
+	left: 100%;
+	width: 110%;
+	height: 110%;
+	content: '';
+	transition: all .3s ease;
+	border-radius: 20px;
+	background: #83b735;
+}
+
+.today-gadgets .viewproducts .col .col-right .item .cart button:hover::before {
+	left: -5%;
+}
+
+.today-gadgets .viewproducts .col .col-right .item .icon {
+	margin-top: 15px;
+}
+
+.today-gadgets .viewproducts .col .col-right .item .icon .heart {
+	font-size: 12px;
+	padding: 10px 30px;
+	color: #83b735;
+	border: 1px solid #cdcdd6;
+	border-radius: 5px;
+}
+
+.today-gadgets .viewproducts .col .col-right .item .icon .compare {
+	font-size: 12px;
+	margin-left: 10px;
+	padding: 10px 30px;
+	color: #99a3b3;
+	border: 1px solid #cdcdd6;
+	border-radius: 5px;
+}
+
 .today-gadgets .title {
 	margin-bottom: 20px;
 	border-bottom: 1px solid #cfc8c8;
@@ -3399,9 +3606,10 @@ footer .payment img:hover {
 	margin-top: 15px;
 }
 
-.viewproduct .col .col-right .item .icon .heart {
+.viewproduct .col .col-right .item .icon .heart a {
 	font-size: 12px;
 	padding: 10px 30px;
+	cursor: pointer;
 	color: #83b735;
 	border: 1px solid #cdcdd6;
 	border-radius: 5px;
@@ -4419,6 +4627,30 @@ footer .payment img:hover {
 	font-weight: 600;
 	margin-top: 40px;
 	color: #222;
+}
+
+.wishlist-product .added,
+.wishlist-product .removed,
+.wishlist-product .exists {
+	display: none;
+	margin-bottom: 15px;
+	padding: 20px;
+	border-top: 4px solid #93b735;
+	background: #fafafa;
+}
+
+.wishlist-product .added i,
+.wishlist-product .removed i,
+.wishlist-product .exists i {
+	margin-right: 20px;
+	color: #93b735;
+}
+
+.wishlist-product .added span,
+.wishlist-product .removed span,
+.wishlist-product .exists span {
+	font-size: 14px;
+	color: #333;
 }
 
 .wishlist-product h3 {
