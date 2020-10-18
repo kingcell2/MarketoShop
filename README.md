@@ -1,7 +1,7 @@
 # MarketoShop
 
 # Installation
-Install 
+### Install 
 gulp-cli first (ignore it if you're already)
 
-$ npm i -g gulp-cli
+#### $ npm i -g gulp-cli
