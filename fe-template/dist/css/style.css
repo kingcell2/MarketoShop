@@ -507,9 +507,15 @@ header ul li a {
 	color: #0a57aa;
 }
 
-.cart-item .product-cart .product .item-product .info .price span.price {
-	font-size: 16px;
+.cart-item .product-cart .product .item-product .info .quantity {
+	font-size: 15px;
 	font-weight: 700;
+	color: #333;
+}
+
+.cart-item .product-cart .product .item-product .info .price span.price {
+	font-size: 15px;
+	font-weight: 500;
 	color: #62ab00;
 }
 
@@ -536,14 +542,17 @@ header ul li a {
 }
 
 .cart-item .view-cart p {
+	font-size: 15px;
+	font-weight: 700;
 	margin-top: 20px;
 	margin-bottom: 20px;
+	color: #111;
 }
 
 .cart-item .view-cart p span {
 	font-size: 16px;
-	font-size: 18px;
-	font-weight: 700;
+	font-size: 16px;
+	font-weight: 500;
 	color: #62ab00;
 }
 
@@ -3571,6 +3580,7 @@ footer .payment img:hover {
 	font-weight: 800;
 	position: relative;
 	z-index: 10;
+	display: flex;
 	overflow: hidden;
 	margin-left: 30px;
 	padding: 17px 45px;
@@ -3578,11 +3588,12 @@ footer .payment img:hover {
 	color: white;
 	border-radius: 5px;
 	background: #007bff;
+	align-items: center;
 }
 
 .viewproduct .col .col-right .item .cart button i.fas {
+	display: none;
 	margin-left: 10px;
-	opacity: 0;
 }
 
 .viewproduct .col .col-right .item .cart button::before {

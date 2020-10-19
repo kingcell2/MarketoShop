@@ -8,10 +8,10 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                        <a class="name" href="">${val.name}</a>
+                        <a class="name" href="/viewproduct.html">${val.name}</a>
                         <div class="price flex a-center">
-                            <span class="quantity">${val.quantity}x </span>
-                            <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
+                        <span class="quantity">${val.quantity_add} x </span>
+                        <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
                         </div>
                     </div>
                 </div>
@@ -20,25 +20,28 @@ $(function () {
             `).appendTo(".product-cart");
         })
     }
-    cart.map(val => {
-        $(`<div class="product flex">
-                <p>${val.name} <span>x ${val.quantity}</span></p>
-                <span class="total-product">$${Math.round(val.price - val.price * val.discount / 100) * val.quantity}.00</span>
-            </div>`)
-            .appendTo(".product-out")
-    })
-    const total = cart.reduce((acc, val) => {
+    function renderProductCheckOut(cart) {
+        cart.map(val => {
+            $(`<div class="product flex">
+                    <p>${val.name} <span>x ${val.quantity_add}</span></p>
+                    <span class="total-product">$${Math.round(val.price - val.price * val.discount / 100) * val.quantity_add}.00</span>
+                </div>`)
+                .appendTo(".product-out")
+        })
+    }
+    renderProductCheckOut(cart)
+    const total_cart = cart.reduce((acc, val) => {
         return acc + val.total;
     }, 0);
     const quantity_cart = cart.reduce((acc, val) => {
-        return acc + val.quantity;
+        return acc + val.quantity_add;
     }, 0);
     $(".blue").text(`${quantity_cart}`);
 
     if (cart.length > 0) {
         $(".no-product").css('display', 'none')
     }
-    $(".total").text(`$${total}.00`)
+    $(".total").text(`$${total_cart}.00`)
 
     $(".product-cart").empty();
     renderProductOnCart(cart)
@@ -73,24 +76,26 @@ $(function () {
         const cartId = $(this).parents(".product").data("id");
         const idx = cart.findIndex(val => val.id === cartId);
         cart.splice(idx, 1)
-        const totalCart = cart.reduce((acc, val) => {
-            return acc + Math.floor(val.total);
+        const total_cart = cart.reduce((acc, val) => {
+            return acc + val.total;
         }, 0);
-        cart.subtotal = totalCart;
-        const quantity = cart.reduce((acc, val) => {
-            return acc + val.quantity;
+        cart.subtotal = total_cart;
+        const quantity_cart = cart.reduce((acc, val) => {
+            return acc + val.quantity_add;
         }, 0);
-        $(".blue").text(`${quantity} `);
+        $(".blue").text(`${quantity_cart} `);
+        $(".product-out").empty();
+        renderProductCheckOut(cart)
         $(".product-cart").empty();
         if (cart.length) {
             $(".no-product").css('display', 'none')
             $(".view-cart").css('opacity', '1')
-            $(".total").text(`$${totalCart}.00`)
+            $(".total").text(`$${total_cart}.00`)
             renderProductOnCart(cart)
         }
         else {
             $(".no-product").css('display', 'block')
-            $(".total").text(`$${totalCart}.00`)
+            $(".total").text(`$${total_cart}.00`)
         }
     });
 })

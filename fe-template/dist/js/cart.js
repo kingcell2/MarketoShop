@@ -29,9 +29,9 @@ $(function () {
                                $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
                         </div>
                         <form class="flex a-center" action="#">
-                            <div class="btn flex  a-center">
+                            <div class="btn flex a-center">
                                 <div class="dec-button">-</div>
-                                <input type="text" class="quantity_" id="quantity" value=${val.quantity_add}>
+                                <input type="tel" class="quantity_" id="quantity" value=${val.quantity_add}>
                                 <div class="inc-button">+</div>
                             </div>
                         </form>
@@ -53,10 +53,10 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                        <a class="name" href="">${val.name}</a>
+                        <a class="name" href="/viewproduct.html">${val.name}</a>
                         <div class="price flex a-center">
-                            <span class="quantity">${val.quantity}x </span>
-                            <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
+                        <span class="quantity">${val.quantity_add} x </span>
+                        <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,6 @@ $(function () {
             `).appendTo(".product-cart");
         })
     }
-
     //delete view cart on screen
     $("body").on("click", "#delete-cart", function () {
         const cartId = $(this).parents(".item").data("id");
@@ -97,15 +96,37 @@ $(function () {
         $(".cols").empty();
         renderViewCart(cart)
     });
-
     // update cart 
     $("body").on("click", ".update", function () {
         const currentId = $(this).parents(".item").data("id");
         const idx = cart.find(val => val.id === currentId);
-        let quantity_input = $(".quantity_").val()
+        let quantity_input = $('.quantity_').val()
         idx.quantity_add = parseInt(quantity_input);
         idx.total = (Math.round(idx.quantity_add * (idx.price - idx.price * idx.discount / 100)))
+        if (idx.quantity_add > idx.quantity) {
+            alert("Not enough products on stock ,"
+                + " Existsing quantity on stock is " + `${idx.quantity}`
+                + " Please check back again!"
+            )
+            idx.quantity_add = idx.quantity
+            idx.total = (Math.round(idx.quantity_add * (idx.price - idx.price * idx.discount / 100)))
+            $(".cols").empty();
+            renderViewCart(cart)
+            $(".product-cart").empty();
+            renderProductOnCart(cart)
+            const total_cart = cart.reduce((acc, val) => {
+                return acc + val.total;
+            }, 0);
+            const quantity_cart = cart.reduce((acc, val) => {
+                return acc + val.quantity_add;
+            }, 0);
+            $(".blue").text(`${quantity_cart}`);
+            $(".total").text(`$${total_cart}.00`)
+            return 0;
+        }
+        else { }
         // cart.push(idx)
+        //console.log(cart);
         const quantity_cart = cart.reduce((acc, val) => {
             return acc + val.quantity_add;
         }, 0);
@@ -157,5 +178,4 @@ $(function () {
         $(".cols").empty();
         renderViewCart(cart)
     });
-
 })

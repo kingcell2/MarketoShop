@@ -10,10 +10,10 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                        <a class="name" href="">${val.name}</a>
-                        <div class="price flex a-center">
-                            <span class="quantity">${val.quantity_add}x </span>
-                            <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
+                    <a class="name" href="/viewproduct.html">${val.name}</a>
+                    <div class="price flex a-center">
+                    <span class="quantity">${val.quantity_add} x </span>
+                    <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
                         </div>
                     </div>
                 </div>
@@ -39,27 +39,25 @@ $(function () {
         `).appendTo(".cols-list")
         })
     }
-    if (wishlist !== null) {
-        const quantity_wilsit = wishlist.reduce((acc, val) => {
-            return acc + val.quantity_add;
-        }, 0);
-        $(".white").text(`${quantity_wilsit}`);
-        $(".product-cart").empty();
-        renderWishlist(wishlist)
-    }
-    if (cart !== null) {
-        const total_cart = cart.reduce((acc, val) => {
-            return acc + val.total;
-        }, 0);
-        const quantity_cart = cart.reduce((acc, val) => {
-            return acc + val.quantity_add;
-        }, 0);
-        $(".blue").text(`${quantity_cart}`);
-        $(".no-product").css('display', 'none')
-        $(".total").text(`$${total_cart}.00`)
-        renderProductOnCart(cart)
+    const quantity_wilsit = wishlist.reduce((acc, val) => {
+        return acc + val.quantity_add;
+    }, 0);
+    $(".white").text(`${quantity_wilsit}`);
+    $(".product-cart").empty();
+    renderWishlist(wishlist)
 
-    }
+    const total_cart = cart.reduce((acc, val) => {
+        return acc + val.total;
+    }, 0);
+    const quantity_cart = cart.reduce((acc, val) => {
+        return acc + val.quantity_add;
+    }, 0);
+    $(".blue").text(`${quantity_cart}`);
+    $(".no-product").css('display', 'none')
+    $(".total").text(`$${total_cart}.00`)
+    renderProductOnCart(cart)
+
+
 
 
     $("body").on("click", "#delete-list", function () {
@@ -84,7 +82,7 @@ $(function () {
 
     })
     $("body").on("click", "#add-list", function () {
-        let cart = []
+
         const currentId = $(this).parents(".item").data("id");
         const currentItem = wishlist.find((val) => val.id === currentId);
         const currentItem2 = wishlist.findIndex((val) => val.id === currentId);
@@ -93,9 +91,10 @@ $(function () {
         const idx = cart.findIndex(val => val.id === currentId);
         if (idx === -1) {
             currentItem.quantity_add = 1;
-            currentItem.total = Math.round((currentItem.price - currentItem.price * currentItem.discount / 100) * currentItem.quantity);
+            currentItem.total = Math.round((currentItem.price - currentItem.price * currentItem.discount / 100) * currentItem.quantity_add);
             cart.push(currentItem)
             wishlist.splice(currentItem2, 1)
+            //console.log(cart);
             $(".cols-list").empty();
             const quantity_wilsit = wishlist.reduce((acc, val) => {
                 return acc + val.quantity_add;

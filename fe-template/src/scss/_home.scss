@@ -372,7 +372,6 @@ header{
                     height: 90px;
                 }
                 .info{
-                    //margin-left: -100px;
                     a.name{
                         font-weight: 600;
                         font-size: 16px;
@@ -383,10 +382,15 @@ header{
                             transition: all 0.3s;
                         }
                     }
+                    .quantity{
+                        color: #333333;
+                        font-weight: 700;
+                        font-size: 15px;
+                    }
                     .price{
                         span.price{
-                            font-size: 16px;
-                            font-weight: 700;
+                            font-size: 15px;
+                            font-weight: 500;
                             color: #62ab00;
                         }
                     }
@@ -421,11 +425,14 @@ header{
         p{
             margin-top: 20px;
             margin-bottom: 20px;
+            color: #111111;
+            font-weight: 700;
+            font-size: 15px;
             span{
                 font-size: 16px;
-                font-weight: 700;
+                font-weight: 500;
                 color: #62ab00;
-                font-size: 18px;
+                font-size: 16px;
 
             }
         }

@@ -48,7 +48,7 @@ $(function () {
                         <form class="flex a-center" action="#">
                             <div class="btn flex  a-center">
                                 <div class="dec-button">-</div>
-                                <input type="text" id="quantity" value="1">
+                                <input type="text" class="quantity_" id="quantity" value="1">
                                 <div class="inc-button">+</div>
                             </div>
                             
@@ -89,7 +89,7 @@ $(function () {
     $(".add-on-view").click(function (e) {
         e.preventDefault();
         $("i.fas").css({
-            'opacity': '1',
+            'display': 'flex',
         });
         $(".cart-item").css({
             'position': 'fixed',

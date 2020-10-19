@@ -2262,9 +2262,9 @@ $(function () {
                     <img src=${val.img}
                         alt="">
                     <div class="info">
-                        <a class="name" href="">${val.name}</a>
+                        <a class="name" href="/viewproduct.html">${val.name}</a>
                         <div class="price flex a-center">
-                            <span class="quantity">${val.quantity_add}x </span>
+                            <span class="quantity">${val.quantity_add} x </span>
                             <span class="price"> $${Math.round(val.price - val.price * val.discount / 100)}.00</span>
                         </div>
                     </div>
@@ -2306,7 +2306,7 @@ $(function () {
                             <form class="flex a-center" action="#">
                                 <div class="btn flex  a-center">
                                     <div class="dec-button">-</div>
-                                    <input type="text" id="quantity" value="1">
+                                    <input type="text" class="quantity_" id="quantity" value="1">
                                     <div class="inc-button">+</div>
                                 </div>
                             </form>
@@ -2563,8 +2563,9 @@ $(function () {
     })
 
 
+
     $(function () {
-        $("form").on("click", ".dec-button", function () {
+        $("body").on("click", ".dec-button", function () {
             let $quantity = $(this).siblings('#quantity')
             value = +$quantity.val();
             if (value > 1) {
@@ -2572,7 +2573,7 @@ $(function () {
             }
             $(".update").css('display', 'flex')
         })
-        $('form').on('click', '.inc-button', function () {
+        $('body').on('click', '.inc-button', function () {
             var $quantity = $(this).siblings('#quantity'),
                 value = +$quantity.val();
             if (value < 1000) {

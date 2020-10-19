@@ -163,8 +163,10 @@
                      overflow: hidden;
                      z-index: 10;
                      position: relative;
+                     display: flex;
+                     align-items: center;
                      i.fas{
-                        opacity: 0;
+                        display:  none;
                         margin-left: 10px;
                       }
                      &::before{
