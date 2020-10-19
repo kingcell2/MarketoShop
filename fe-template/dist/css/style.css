@@ -584,7 +584,7 @@ header ul li a {
 }
 
 .cart-item .view-cart a:hover::before {
-	left: -10px;
+	left: -10%;
 }
 
 .cart-item .view-cart a.check-out {

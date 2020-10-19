@@ -70,18 +70,18 @@ $(function () {
         const cartId = $(this).parents(".item").data("id");
         const idx = cart.findIndex(val => val.id === cartId);
         cart.splice(idx, 1)
-        const totalCart = cart.reduce((acc, val) => {
+        const total_cart = cart.reduce((acc, val) => {
             return acc + val.total;
         }, 0);
-        cart.subtotal = totalCart;
-        const quantity = cart.reduce((acc, val) => {
-            return acc + val.quantity;
+        cart.subtotal = total_cart;
+        const quantity_cart = cart.reduce((acc, val) => {
+            return acc + val.quantity_add;
         }, 0);
-        $(".blue").text(`${quantity}`);
+        $(".blue").text(`${quantity_cart}`);
         $(".product-cart").empty();
         if (cart.length) {
             $(".view-cart").css('opacity', '1')
-            $(".total").text(`$${totalCart}.00`)
+            $(".total").text(`$${total_cart}.00`)
             renderProductOnCart(cart)
         }
         else {
@@ -91,7 +91,7 @@ $(function () {
             $(".no-product").css('display', 'block')
             $(".row.a").css('display', 'none')
             $(".code").css('display', 'none')
-            $(".total").text(`$${totalCart}.00`)
+            $(".total").text(`$${total_cart}.00`)
         }
         $(".cols").empty();
         renderViewCart(cart)
