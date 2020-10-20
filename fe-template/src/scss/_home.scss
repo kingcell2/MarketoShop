@@ -1516,13 +1516,13 @@ header{
                     }
                     
                     &:hover{
-                        z-index: 99;
+                        z-index: 10;
                         box-shadow: 2px 2px 2px 2px #cfc8c8;
                         .stars{
                             transition: all 0.3s;
                             top: 5%;
                             opacity: 1;
-                            z-index: 99;
+                            z-index: 10;
                         }
                         .heart{
                             transition: all 0.3s;

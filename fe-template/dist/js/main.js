@@ -2122,10 +2122,14 @@ $(function () {
                 'width': '100%',
                 'top': '0',
                 'z-index': '99',
+                'animation': "fadeIn 0.5s forwards"
             });
         }
         else {
-            $(".menu").css('position', 'unset');
+            $(".menu").css({
+                'position': 'unset',
+                'animation': "fadeOut 0s forwards"
+            });
         }
     });
 

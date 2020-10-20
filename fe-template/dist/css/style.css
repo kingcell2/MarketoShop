@@ -1732,12 +1732,12 @@ header ul li a {
 }
 
 .featured-product .banner-right .content .col .item:hover {
-	z-index: 99;
+	z-index: 10;
 	box-shadow: 2px 2px 2px 2px #cfc8c8;
 }
 
 .featured-product .banner-right .content .col .item:hover .stars {
-	z-index: 99;
+	z-index: 10;
 	top: 5%;
 	transition: all .3s;
 	opacity: 1;
